@@ -1,0 +1,22 @@
+.iconPDF{
+	cursor: pointer;
+	color: #E74C3C;
+}
+.iconWord{
+	cursor: pointer;
+	color: #3498DB;
+}
+.myBody{
+	background-color: #fff;
+}
+.labelInput{
+  font-size: 13px; 
+  color: #333; 
+  letter-spacing: 1px;
+}
+.imp-fue{
+  font-family: 'Segoe UI';
+}
+.fonTap{
+  background: #f8f4f4;
+}

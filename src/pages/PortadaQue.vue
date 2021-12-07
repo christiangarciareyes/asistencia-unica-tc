@@ -1,0 +1,99 @@
+<template>
+  <transition name="fade" mode="out-in">
+    <div class="container-login100">
+      <div class="super_container">
+        <header class="header d-flex flex-row">
+          <div class="header_content d-flex flex-row align-items-center">
+            <div class="logo_container">
+              <div class="logo">
+                <img :src="image" alt="escudo" class="m-r-10">
+                <span>Llaqtayuqta yanapanapaq lika</span>
+              </div>
+            </div>
+          </div>
+          <div class="header_side d-flex flex-row justify-content-center align-items-center">
+            <span>TRIBUNAL CONSTITUCIONAL</span>
+          </div>
+        </header>
+      </div>
+      <div class="hero_boxes">
+        <div class="hero_boxes_inner">
+          <div class="container" style="justify-content: center">
+            <div class="row">
+              <div class="col-lg-4 hero_box_col">
+                <router-link to="/reclamoQue">
+                <div class="hero_box d-flex flex-row align-items-center justify-content-start">
+                  <i class="fa fa-book fa-3x m-r-10" aria-hidden="true" style="color: #fff"></i>
+                  <div class="hero_box_content">
+                    <h2 class="hero_box_title">Kutipakunapaq maytu</h2>
+                    <a class="hero_box_link" style="color: #fff">Willakuy saqinapaq riy</a>
+                  </div>
+                </div>
+                </router-link>
+              </div>
+              <div class="col-lg-4 hero_box_col">
+               <router-link to="/solicitudQue">
+                <div class="hero_box d-flex flex-row align-items-center justify-content-start">
+                  <i class="fa fa-envelope fa-3x m-r-10" aria-hidden="true" style="color: #fff"></i>
+                  <div class="hero_box_content">
+                    <h2 class="hero_box_title">Yaykunapaq mañakuykuna</h2>
+                    <a class="hero_box_link" style="color: #fff">Mañakuq riy</a>
+                  </div>
+                </div>
+               </router-link>
+              </div>
+              <div class="col-lg-4 hero_box_col">
+               <router-link to="/">
+                <div class="hero_box d-flex flex-row align-items-center justify-content-start">
+                  <i class="fa fa-language fa-3x m-r-10" aria-hidden="true" style="color: #fff"></i>
+                  <div class="hero_box_content">
+                    <h2 class="hero_box_title">Castilla simipi lika</h2>
+                    <a class="hero_box_link" style="color: #fff">Likata tikray</a>
+                  </div>
+                </div>
+               </router-link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</template>
+
+<script>
+
+export default{
+  props: {
+    image: {
+      default: require('@/assets/img/logo.png')
+    }
+  },
+  mounted: function () {
+    if(localStorage.getItem('AccessToken') != null && localStorage.getItem('expires_at') != null && localStorage.getItem('profile') != null && localStorage.getItem('operaciones') != null && localStorage.getItem('nickname') != null){
+      this.$router.push('/inicio');    
+    }else{}
+  },
+  computed: {
+    isLogedIn(){
+      return this.$router.app.$auth.isAuthenticated();
+    }
+  },
+  methods: {
+    login() {
+      this.$router.app.$auth.login();
+    }
+  }
+}
+</script>
+<style>
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity .5s
+  }
+  .fade-enter,
+  .fade-leave-to
+  {
+    opacity: 0
+  }
+</style>
