@@ -1,8 +1,8 @@
 <template>
 <div class="content">
   <div>
-      <loading :active.sync="isLoading" 
-      :can-cancel="false" 
+      <loading :active.sync="isLoading"
+      :can-cancel="false"
       :is-full-page="true"></loading>
   </div>
   <div class="md-layout">
@@ -40,7 +40,7 @@
                 <label class="labelInput">AUDIO EN QUECHUA</label>
                 <b-form-input style="border-radius: 0px" class="imp-fue mb-3" type="text" v-model="audio" disabled/>
                 <div class="container-form-btn fonTap m-t-40">
-                    <iframe style="height: 200px; width: 100%" class="embed-responsive-item" :src="ruta" allowfullscreen></iframe>
+                    <iframe title="iframe" style="height: 200px; width: 100%" class="embed-responsive-item" :src="ruta" allowfullscreen></iframe>
                 </div>
                 <label class="labelInput m-t-20">FUNCIONARIO A QUÍEN SE DERIVÓ</label>
                 <b-form-input style="border: 1px solid #D5D8DC; text-transform: uppercase" v-model="nomusuarioderivado" class="imp-fue mb-3" disabled />
@@ -84,7 +84,7 @@
 
 <script>
 
-import datasource from 'vue-resource'
+
 import axios from 'axios'
 
 import Loading from 'vue-loading-overlay'
@@ -138,7 +138,7 @@ export default{
         if(this.estado == 3){
           this.variante = true;
         }
-      }     
+      }
     }else{
       this.$router.app.$auth.logout();
       this.$router.push({name: 'Portada'});
@@ -146,7 +146,7 @@ export default{
   },
   methods: {
      derivando (){
-      this.isLoading = true; 
+      this.isLoading = true;
       if(this.respuesta != ''){
         let fromData = new FormData();
         fromData.append('codreclamo', this.codreclamo);
@@ -165,14 +165,14 @@ export default{
         fromData.append('idtipoasistencia', 1);
         axios.post(this.$store.state.serverAsistenciaAdmin + '/updateDerivadoQuechua', fromData, {crossDomain: true, headers: {"Authorization": this.authorization}
         }).then((response) => {
-          this.isLoading = false; 
+          this.isLoading = false;
           this.atras();
-          this.notifyVue4();          
+          this.notifyVue4();
          },(error) => {
             this.isLoading = false;
          });
       }else{
-        this.isLoading = false; 
+        this.isLoading = false;
         this.notifyVue();
       }
      },

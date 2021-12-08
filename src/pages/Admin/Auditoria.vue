@@ -1,8 +1,8 @@
 <template>
 <div class="content">
   <div>
-      <loading :active.sync="isLoading" 
-      :can-cancel="false" 
+      <loading :active.sync="isLoading"
+      :can-cancel="false"
       :is-full-page="true"></loading>
   </div>
   <div class="md-layout">
@@ -48,11 +48,11 @@
                       <br><br>
                   </div>
                 </div>
-                <b-table bordered 
+                <b-table bordered
                          class="imp-fue m-t-10"
                          show-empty
                          stacked="lg"
-                         :items="lista" 
+                         :items="lista"
                          :fields="fields"
                          :current-page="currentPage"
                          :per-page="perPage"
@@ -72,8 +72,8 @@
                     </template>
                     <template slot="tipo" slot-scope="row">
                       <p v-if="row.item.nid_tipoasistencia == 1" class="labelInput imp-fue">LIBRO DE RECLAMACIONES</p>
-                      <p v-if="row.item.nid_tipoasistencia == 2" class="labelInput imp-fue">SOLICITUD DE ACCESO A LA INFORMACIÓN</p> 
-                      <p v-if="row.item.nid_tipoasistencia == 3" class="labelInput imp-fue">CANALES DE INFORMACIÓN</p> 
+                      <p v-if="row.item.nid_tipoasistencia == 2" class="labelInput imp-fue">SOLICITUD DE ACCESO A LA INFORMACIÓN</p>
+                      <p v-if="row.item.nid_tipoasistencia == 3" class="labelInput imp-fue">CANALES DE INFORMACIÓN</p>
                     </template>
                     <template slot="reclamante" slot-scope="row">
                       <p class="labelInput imp-fue">{{row.item.ctxt_nomape}}</p>
@@ -86,8 +86,8 @@
                     </template>
                     <template slot="estado" slot-scope="row">
                       <p v-if="row.item.nflg_estado == 0" class="labelInput imp-fue">PENDIENTE</p>
-                      <p v-if="row.item.nflg_estado == 1" class="labelInput imp-fue">DERIVADO</p> 
-                      <p v-if="row.item.nflg_estado == 2" class="labelInput imp-fue">RESPONDIDO</p> 
+                      <p v-if="row.item.nflg_estado == 1" class="labelInput imp-fue">DERIVADO</p>
+                      <p v-if="row.item.nflg_estado == 2" class="labelInput imp-fue">RESPONDIDO</p>
                     </template>
                     <template slot="ver" slot-scope="row">
                       <button v-if="row.item.nid_tipoasistencia == 1" @click="verDoc(row.item)" type="button" class="btn-success-circle btn btn-xs" v-b-tooltip.hover title="Ver Reclamo" ><i class="fa fa-external-link p-r-3"></i></button>
@@ -123,11 +123,11 @@
                       <br><br>
                   </div>
                 </div>
-                <b-table bordered 
+                <b-table bordered
                          class="imp-fue m-t-10"
                          show-empty
                          stacked="lg"
-                         :items="lista2" 
+                         :items="lista2"
                          :fields="fields2"
                          :current-page="currentPage2"
                          :per-page="perPage2"
@@ -146,8 +146,8 @@
                     </template>
                     <template slot="tipo" slot-scope="row">
                       <p v-if="row.item.nid_tipoasistencia == 1" class="labelInput imp-fue">LIBRO DE RECLAMACIONES</p>
-                      <p v-if="row.item.nid_tipoasistencia == 2" class="labelInput imp-fue">SOLICITUD DE ACCESO A LA INFORMACIÓN</p> 
-                      <p v-if="row.item.nid_tipoasistencia == 3" class="labelInput imp-fue">CANALES DE INFORMACIÓN</p> 
+                      <p v-if="row.item.nid_tipoasistencia == 2" class="labelInput imp-fue">SOLICITUD DE ACCESO A LA INFORMACIÓN</p>
+                      <p v-if="row.item.nid_tipoasistencia == 3" class="labelInput imp-fue">CANALES DE INFORMACIÓN</p>
                     </template>
                     <template slot="reclamante" slot-scope="row">
                       <p class="labelInput imp-fue">{{row.item.ctxt_nomape}}</p>
@@ -235,7 +235,7 @@
 
 <script>
 
-import datasource from 'vue-resource'
+
 import axios from 'axios'
 
 import Loading from 'vue-loading-overlay'
@@ -243,9 +243,9 @@ import 'vue-loading-overlay/dist/vue-loading.css'
 
 import moment from 'moment';
 import Datepicker from "vuejs-datepicker/dist/vuejs-datepicker.esm.js";
-import * as lang from "vuejs-datepicker/src/locale";
 
-import {en, es} from 'vuejs-datepicker/dist/locale';
+
+import {es} from 'vuejs-datepicker/dist/locale';
 
 export default{
   data () {
@@ -403,7 +403,7 @@ export default{
   },
   created() {
     if(localStorage.getItem('AccessToken') != null || localStorage.getItem('expires_at') != null || localStorage.getItem('profile') != null || localStorage.getItem('operaciones') != null || localStorage.getItem('nickname') != null){
-      this.cargaView();      
+      this.cargaView();
     }else{
       this.$router.app.$auth.logout();
       this.$router.push({name: 'Portada'});
@@ -431,9 +431,9 @@ export default{
        this.$router.push('/auditoria/auditoriaConsulta');
     },
     cargaView(){
-      this.isLoading = true; 
+      this.isLoading = true;
       axios.get(this.$store.state.autenticacion + '/operaciones//app2/PAUC/'+ this.name + '/' + this.usuario, {
-      crossdomain: true, 
+      crossdomain: true,
       headers: {
         Authorization: this.authorization
       }
@@ -441,7 +441,7 @@ export default{
         this.auto = response.data;
         if(this.auto.codError == 1){
           this.consultar1(1);
-        }else{ 
+        }else{
           this.isLoading = false;
           this.$router.go(-1);
         }
@@ -454,7 +454,7 @@ export default{
       }else{
           anio = moment(this.periodopen).format('YYYY');
       }
-      this.isLoading = true; 
+      this.isLoading = true;
       axios.get(this.$store.state.serverAsistenciaAdmin + '/listAuditoriaPendientes?periodo=' + anio, {crossdomain: true,
       headers: {
         Authorization: this.authorization
@@ -473,7 +473,7 @@ export default{
             }
           },(error) => {
             this.notifyVue();
-      });  
+      });
     },
     consultar2(param){
       var anio = '';
@@ -482,7 +482,7 @@ export default{
       }else{
           anio = moment(this.periodoate).format('YYYY');
       }
-      this.isLoading = true; 
+      this.isLoading = true;
       axios.get(this.$store.state.serverAsistenciaAdmin + '/listAuditoriaAtendidas?periodo=' + anio, {crossdomain: true,
       headers: {
         Authorization: this.authorization
@@ -528,7 +528,7 @@ export default{
         }else{
           nid = '3';
         }
-        this.isLoading = true; 
+        this.isLoading = true;
         axios.get(this.$store.state.serverAsistenciaAdmin + '/listReporteAuditoria?anio=' + anio + '&mes=' + mes + '&tipo=' + tipo + '&nid=' + nid,  {crossdomain: true,
         headers: {
           Authorization: this.authorization
@@ -544,7 +544,7 @@ export default{
               }
             },(error) => {
               this.notifyVue();
-        }); 
+        });
       }else{
         this.$notify(
           {
@@ -626,9 +626,9 @@ export default{
             "ctxt_dependencia": item.ctxt_dependencia,
             "ctxt_formaentrega": item.ctxt_formaentrega,
             "ctxt_especificacion": item.ctxt_especificacion,
-            "dfec_registro": item.dfec_registro,
-            "dfec_vencimiento": item.dfec_vencimiento,
-            "nflg_estado": estado,
+
+
+
             "ctxt_domicilio": item.ctxt_domicilio,
             "ctxt_tiporeclamo": item.ctxt_tiporeclamo,
             "dfec_registro": item.dfec_registro,
@@ -671,7 +671,7 @@ export default{
             "ctxt_respuestaresponsable": item.ctxt_respuestaresponsable,
             "dfec_atencion": item.dfec_atencion,
             "vencido": vencimiento
-          })          
+          })
         }
       })
     },

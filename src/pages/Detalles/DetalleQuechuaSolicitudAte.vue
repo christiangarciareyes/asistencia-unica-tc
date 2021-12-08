@@ -35,7 +35,7 @@
                 <label class="labelInput">AUDIO EN QUECHUA</label>
                 <b-form-input style="border-radius: 0px" class="imp-fue mb-3" type="text" v-model="audio" disabled/>
                 <div class="container-form-btn fonTap m-t-40">
-                    <iframe style="height: 200px; width: 100%" class="embed-responsive-item" :src="ruta" allowfullscreen></iframe>
+                    <iframe title="iframe" style="height: 200px; width: 100%" class="embed-responsive-item" :src="ruta" allowfullscreen></iframe>
                 </div>
                 <label class="labelInput m-t-20">DETALLE DEL ENVÍO</label>
                 <textarea id="text" class="form-control imp-fue mb-3"
@@ -134,7 +134,7 @@ export default{
         this.derivacion = this.$store.state.solicitudQue.ctxt_detalleresponsable
         this.respuesta = this.$store.state.solicitudQue.ctxt_detallederivado
         this.atencion = this.$store.state.solicitudQue.ctxt_respuestaresponsable
-      }   
+      }
     }else{
       this.$router.app.$auth.logout();
       this.$router.push({name: 'Portada'});

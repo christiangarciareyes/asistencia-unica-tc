@@ -1,8 +1,8 @@
 <template>
 <div class="content">
   <div>
-      <loading :active.sync="isLoading" 
-      :can-cancel="false" 
+      <loading :active.sync="isLoading"
+      :can-cancel="false"
       :is-full-page="true"></loading>
   </div>
   <div class="md-layout">
@@ -48,11 +48,11 @@
                       <br><br>
                   </div>
                 </div>
-                <b-table bordered 
+                <b-table bordered
                          class="imp-fue m-t-10"
                          show-empty
                          stacked="lg"
-                         :items="lista" 
+                         :items="lista"
                          :fields="fields"
                          :current-page="currentPage"
                          :per-page="perPage"
@@ -90,8 +90,8 @@
                     </template>
                     <template slot="estado" slot-scope="row">
                       <p v-if="row.item.nflg_estado == 0" class="labelInput imp-fue">PENDIENTE</p>
-                      <p v-if="row.item.nflg_estado == 1" class="labelInput imp-fue">DERIVADO</p> 
-                      <p v-if="row.item.nflg_estado == 2" class="labelInput imp-fue">RESPONDIDO</p> 
+                      <p v-if="row.item.nflg_estado == 1" class="labelInput imp-fue">DERIVADO</p>
+                      <p v-if="row.item.nflg_estado == 2" class="labelInput imp-fue">RESPONDIDO</p>
                     </template>
                     <template slot="ver" slot-scope="row">
                       <button @click="verDoc(row.item)" type="button" class="btn-success-circle btn btn-xs" v-b-tooltip.hover title="Ver Solicitud" ><i class="fa fa-external-link p-r-3"></i></button>
@@ -132,11 +132,11 @@
                       <br><br>
                   </div>
                 </div>
-                <b-table bordered 
+                <b-table bordered
                          class="imp-fue m-t-10"
                          show-empty
                          stacked="lg"
-                         :items="lista4" 
+                         :items="lista4"
                          :fields="fields3"
                          :current-page="currentPage3"
                          :per-page="perPage3"
@@ -171,10 +171,10 @@
                     </template>
                     <template slot="estado" slot-scope="row">
                       <p v-if="row.item.nflg_estado == 0" class="labelInput imp-fue">PENDIENTE</p>
-                      <p v-if="row.item.nflg_estado == 1" class="labelInput imp-fue">POR TRADUCIR</p> 
-                      <p v-if="row.item.nflg_estado == 2" class="labelInput imp-fue">TRADUCIDO</p> 
-                      <p v-if="row.item.nflg_estado == 3" class="labelInput imp-fue">DERIVADO</p> 
-                      <p v-if="row.item.nflg_estado == 4" class="labelInput imp-fue">RESPONDIDO</p> 
+                      <p v-if="row.item.nflg_estado == 1" class="labelInput imp-fue">POR TRADUCIR</p>
+                      <p v-if="row.item.nflg_estado == 2" class="labelInput imp-fue">TRADUCIDO</p>
+                      <p v-if="row.item.nflg_estado == 3" class="labelInput imp-fue">DERIVADO</p>
+                      <p v-if="row.item.nflg_estado == 4" class="labelInput imp-fue">RESPONDIDO</p>
                     </template>
                     <template slot="ver" slot-scope="row">
                       <button @click="verDoc2(row.item)" type="button" class="btn-success-circle btn btn-xs" v-b-tooltip.hover title="Ver Solicitud" ><i class="fa fa-external-link p-r-3"></i></button>
@@ -208,11 +208,11 @@
                       <br><br>
                   </div>
                 </div>
-                <b-table bordered 
+                <b-table bordered
                          class="imp-fue m-t-10"
                          show-empty
                          stacked="lg"
-                         :items="lista2" 
+                         :items="lista2"
                          :fields="fields2"
                          :current-page="currentPage2"
                          :per-page="perPage2"
@@ -280,11 +280,11 @@
                       <br><br>
                   </div>
                 </div>
-                <b-table bordered 
+                <b-table bordered
                          class="imp-fue m-t-10"
                          show-empty
                          stacked="lg"
-                         :items="lista5" 
+                         :items="lista5"
                          :fields="fields4"
                          :current-page="currentPage4"
                          :per-page="perPage4"
@@ -366,7 +366,7 @@
 
 <script>
 
-import datasource from 'vue-resource'
+
 import axios from 'axios'
 
 import Loading from 'vue-loading-overlay'
@@ -374,9 +374,9 @@ import 'vue-loading-overlay/dist/vue-loading.css'
 
 import moment from 'moment';
 import Datepicker from "vuejs-datepicker/dist/vuejs-datepicker.esm.js";
-import * as lang from "vuejs-datepicker/src/locale";
 
-import {en, es} from 'vuejs-datepicker/dist/locale';
+
+import {es} from 'vuejs-datepicker/dist/locale';
 
 export default{
   data () {
@@ -523,7 +523,7 @@ export default{
   },
   created() {
     if(localStorage.getItem('AccessToken') != null || localStorage.getItem('expires_at') != null || localStorage.getItem('profile') != null || localStorage.getItem('operaciones') != null || localStorage.getItem('nickname') != null){
-      this.cargaView();      
+      this.cargaView();
     }else{
       this.$router.app.$auth.logout();
       this.$router.push({name: 'Portada'});
@@ -571,9 +571,9 @@ export default{
        this.$router.push('/solicitudes/detalleQuechuaSolicitudAte');
     },
     cargaView(){
-      this.isLoading = true; 
+      this.isLoading = true;
       axios.get(this.$store.state.autenticacion + '/operaciones//app2/PAUC/'+ this.name + '/' + this.usuario, {
-      crossdomain: true, 
+      crossdomain: true,
       headers: {
         Authorization: this.authorization
       }
@@ -581,14 +581,14 @@ export default{
         this.auto = response.data;
         if(this.auto.codError == 1){
           this.consultar1(1);
-        }else{ 
+        }else{
           this.isLoading = false;
           this.$router.go(-1);
         }
       });
     },
     alertar(datos){
-        this.isLoading = true; 
+        this.isLoading = true;
         let fromData = new FormData();
         fromData.append('codreclamo', datos.cnum_numperio);
         fromData.append('fecreclamo', datos.dfec_registro);
@@ -621,9 +621,9 @@ export default{
         fromData.append('idtipoasistencia', 2);
         axios.post(this.$store.state.serverAsistenciaAdmin + '/derivarConsulta', fromData, {crossDomain: true, headers: {"Authorization": this.authorization}
         }).then((response) => {
-          this.isLoading = false; 
-          this.notifyVue4(); 
-          this.consultar1(1);      
+          this.isLoading = false;
+          this.notifyVue4();
+          this.consultar1(1);
         },(error) => {
           this.isLoading = false;
         });
@@ -635,7 +635,7 @@ export default{
       }else{
           anio = moment(this.periodopen).format('YYYY');
       }
-      this.isLoading = true; 
+      this.isLoading = true;
       axios.get(this.$store.state.serverAsistenciaAdmin + '/listSolicitudesPendientes?periodo=' + anio, {crossdomain: true,
       headers: {
         Authorization: this.authorization
@@ -654,7 +654,7 @@ export default{
             }
           },(error) => {
             this.notifyVue();
-      });  
+      });
     },
     consultar2(param){
       var anio = '';
@@ -663,7 +663,7 @@ export default{
       }else{
           anio = moment(this.periodoate).format('YYYY');
       }
-      this.isLoading = true; 
+      this.isLoading = true;
       axios.get(this.$store.state.serverAsistenciaAdmin + '/listSolicitudesAtendidas?periodo=' + anio, {crossdomain: true,
       headers: {
         Authorization: this.authorization
@@ -691,7 +691,7 @@ export default{
       }else{
           anio = moment(this.periodoate).format('YYYY');
       }
-      this.isLoading = true; 
+      this.isLoading = true;
       axios.get(this.$store.state.serverAsistenciaAdmin + '/listQuechuaSolicitudesPendientes?periodo=' + anio, {crossdomain: true,
       headers: {
         Authorization: this.authorization
@@ -719,7 +719,7 @@ export default{
       }else{
           anio = moment(this.periodoate).format('YYYY');
       }
-      this.isLoading = true; 
+      this.isLoading = true;
       axios.get(this.$store.state.serverAsistenciaAdmin + '/listQuechuaSolicitudesAtendidas?periodo=' + anio, {crossdomain: true,
       headers: {
         Authorization: this.authorization
@@ -753,7 +753,7 @@ export default{
         }else{
           tipo = '1';
         }
-        this.isLoading = true; 
+        this.isLoading = true;
         axios.get(this.$store.state.serverAsistenciaAdmin + '/listReporteSolicitudes?anio=' + anio + '&mes=' + mes + '&tipo=' + tipo,  {crossdomain: true,
         headers: {
           Authorization: this.authorization
@@ -769,7 +769,7 @@ export default{
               }
             },(error) => {
               this.notifyVue();
-        }); 
+        });
       }else{
         this.$notify(
           {
@@ -818,9 +818,9 @@ export default{
           "ctxt_dependencia": item.ctxt_dependencia,
           "ctxt_formaentrega": item.ctxt_formaentrega,
           "ctxt_especificacion": item.ctxt_especificacion,
-          "dfec_registro": item.dfec_registro,
-          "dfec_vencimiento": item.dfec_vencimiento,
-          "nflg_estado": estado,
+
+
+
           "ctxt_domicilio": item.ctxt_domicilio,
           "ctxt_tiporeclamo": item.ctxt_tiporeclamo,
           "dfec_registro": item.dfec_registro,

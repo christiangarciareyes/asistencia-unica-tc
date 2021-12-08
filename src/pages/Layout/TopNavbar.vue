@@ -13,7 +13,7 @@
         <div class="md-collapse">
           <md-list>
             <md-list-item>
-              <i style="margin-top: -15px" class="material-icons">person</i> 
+              <i style="margin-top: -15px" class="material-icons">person</i>
               <p style="color: #333; font-weight: 400; letter-spacing: 1px; text-transform: uppercase" class="m-l-10 m-t-5">{{usuario}}</p>
             </md-list-item>
             <md-list-item @click="logout">
@@ -29,7 +29,7 @@
 
 <script>
 
-import axios from 'axios'
+
 
 export default{
   data () {

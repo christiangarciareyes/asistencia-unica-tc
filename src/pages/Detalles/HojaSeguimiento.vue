@@ -1,8 +1,8 @@
 <template>
 <div class="content">
   <div>
-      <loading :active.sync="isLoading" 
-      :can-cancel="false" 
+      <loading :active.sync="isLoading"
+      :can-cancel="false"
       :is-full-page="true"></loading>
   </div>
   <div class="md-layout">
@@ -218,7 +218,7 @@
 
 <script>
 
-import datasource from 'vue-resource'
+
 import axios from 'axios'
 
 import Loading from 'vue-loading-overlay'
@@ -282,7 +282,7 @@ export default{
         this.$router.go(-1);
       }else{
         this.obtener();
-      }    
+      }
     }else{
       this.$router.app.$auth.logout();
       this.$router.push({name: 'Portada'});
@@ -291,7 +291,7 @@ export default{
   methods: {
      obtener(){
         let nidregistro = this.$route.params.id;
-        this.isLoading = true; 
+        this.isLoading = true;
         axios.get(this.$store.state.serverAsistenciaAdmin + '/listDatosxregistro?nid=' + nidregistro,  {crossdomain: true,
         headers: {
             Authorization: this.authorization
@@ -334,23 +334,23 @@ export default{
                 headers: {
                     Authorization: this.authorization
                 }
-                }).then((response) => {
-                    this.lista2 = response.data;
+                }).then((response2) => {
+                    this.lista2 = response2.data;
                     this.lista2 = this.lista2.response;
                     this.conversa2 = true;
                     if(this.lista[0].nflg_estado < 4){
-                       this.estadox = true; 
+                       this.estadox = true;
                     }else{
-                       this.estadox = false; 
+                       this.estadox = false;
                     }
- 
+
                     this.nuevahoja = false;
                     this.isLoading = false;
                     this.notifyVue();
                 },(error) => {
-                    this.isLoading = false; 
+                    this.isLoading = false;
                     this.notifyError();
-                }); 
+                });
             }else{
                 if(this.lista[0].ctxt_nomusuarioderivado == null){this.personaderivada = "";}else{this.personaderivada = this.lista[0].ctxt_nomusuarioderivado;}
                 if(this.lista[0].dfec_derivacion == null){this.fechaderivacion = "";}else{this.fechaderivacion = this.lista[0].dfec_derivacion;}
@@ -361,13 +361,13 @@ export default{
                 this.conversa = true;
                 this.estadox = false;
                 this.nuevahoja = false;
-                this.isLoading = false; 
+                this.isLoading = false;
                 this.notifyVue();
             }
         },(error) => {
-            this.isLoading = false; 
+            this.isLoading = false;
             this.notifyError();
-        }); 
+        });
      },
      save(){
         if(this.fecha != null && this.fecha != "" && this.fecha.length == 10 && this.contenido != ""){
@@ -412,7 +412,7 @@ export default{
             },(error) => {
                 this.isLoading = false;
                 this.notifyError3();
-            }); 
+            });
         }else{
            this.notifyError2();
         }
@@ -422,7 +422,7 @@ export default{
      },
      onScroll(e) {
         this.windowTop = window.top.scrollY
-        // console.log(this.windowTop)
+
      },
      notifyVue() {
        this.$notify(
@@ -443,7 +443,7 @@ export default{
           verticalAlign: 'top',
           type: 'danger'
         })
-     },  
+     },
      notifyError2() {
        this.$notify(
         {
@@ -453,7 +453,7 @@ export default{
           verticalAlign: 'top',
           type: 'danger'
         })
-     },  
+     },
      notifyError3() {
        this.$notify(
         {
@@ -463,7 +463,7 @@ export default{
           verticalAlign: 'top',
           type: 'danger'
         })
-     },    
+     },
      nuevo(){
         this.nuevahoja = true;
         window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);

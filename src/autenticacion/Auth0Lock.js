@@ -1,6 +1,6 @@
-import Lock from 'auth0-lock'
-import Vue from 'vue'
-import axios from 'axios'
+import Lock from 'auth0-lock';
+import Vue from 'vue';
+import axios from 'axios';
 
 let options = {
   allowSignUp: true,
@@ -14,138 +14,138 @@ let options = {
    //redirectUrl: 'https://ventanillaadministrativa.sedetc.gob.pe',
    audience: 'https://appweb.sedetc.gob.pe',
   }
-}
+};
 
 let webAuth = new Lock(
   'KnDK917Mo0SLUD9zkrBesuSwwn6ulELv',
   'tcperu.auth0.com',
    options
-)
+);
 
 webAuth.on('authenticated', function (authResult) {
   webAuth.getUserInfo(authResult.accessToken, function (error, profile) {
     if (error) {
-      webAuth.logout()
+      webAuth.logout();
       location.href = '/';
-      return
+      return;
     }
     if (authResult && authResult.accessToken) {
-      let expiresAt = JSON.stringify(authResult.expiresIn * 1000 + new Date().getTime())
-      localStorage.setItem('expires_at', expiresAt)
-      localStorage.setItem('AccessToken', authResult.accessToken)
-      localStorage.setItem('profile', JSON.stringify(profile))
-      let data =       
+      let expiresAt = JSON.stringify(authResult.expiresIn * 1000 + new Date().getTime());
+      localStorage.setItem('expires_at', expiresAt);
+      localStorage.setItem('AccessToken', authResult.accessToken);
+      localStorage.setItem('profile', JSON.stringify(profile));
+      let data =
       {
         'client_id': 'KnDK917Mo0SLUD9zkrBesuSwwn6ulELv',
         'client_secret': 'OnI2kcKwC4aQSVc9WYmiQ3U9d_QEI7L97wC9UNTYBAuvKSXPgVl-ijSvsKRgjToO',
         'audience': 'https://tcperu.auth0.com/api/v2/',
         'grant_type': 'client_credentials'
-      }
+      };
       axios.post('https://tcperu.auth0.com/oauth/token', data, {header: 'content-type: application/json', crossDomain: true
       }).then((response) => {
           let token = 'Bearer ' + response.data.access_token;
           let idPersona = JSON.parse(localStorage.getItem('profile')).sub;
-          axios.defaults.headers.common['Authorization'] = token
-          axios.get('https://tcperu.auth0.com/api/v2/users/' + idPersona,
-          ).then((response) => {
-              let datos = response.data
-              let usuario = datos.username
-              let email = datos.email
-              localStorage.setItem('nickname', usuario)
-              localStorage.setItem('name', email)
+          axios.defaults.headers.common['Authorization'] = token;
+          axios.get('https://tcperu.auth0.com/api/v2/users/' + idPersona
+          ).then((response1) => {
+              let datos = response1.data;
+              let usuario = datos.username;
+              let email = datos.email;
+              localStorage.setItem('nickname', usuario);
+              localStorage.setItem('name', email);
               axios.get('https://tomcat.sedetc.gob.pe/autentica-services-0.0.1/colaboradores/poslogin/' + usuario, {
               headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('AccessToken')
               }
-              }).then((response) => {
+              }).then((response2) => {
                   axios.get('https://tomcat.sedetc.gob.pe/autentica-services-0.0.1/operaciones/app2/PAUC/'+ usuario, {
                   headers: {
                     Authorization: 'Bearer ' + localStorage.getItem('AccessToken')
                   }
-                  }).then((response) => {
-                     let operaciones = response.data;
+                  }).then((response3) => {
+                     let operaciones = response3.data;
                      if(operaciones != ''){
-                       localStorage.setItem('operaciones', JSON.stringify(operaciones))
-                       webAuth.hide()
+                       localStorage.setItem('operaciones', JSON.stringify(operaciones));
+                       webAuth.hide();
                        location.href = '/inicio';
                      }else{
-                       localStorage.removeItem('AccessToken')
-                       localStorage.removeItem('expires_at')
-                       localStorage.removeItem('profile')
-                       localStorage.removeItem('nickname')
-                       localStorage.removeItem('name')
+                       localStorage.removeItem('AccessToken');
+                       localStorage.removeItem('expires_at');
+                       localStorage.removeItem('profile');
+                       localStorage.removeItem('nickname');
+                       localStorage.removeItem('name');
                        location.href = '/';
                      }
-                    },(error) => {
-                      console.log(error)
+                    },(error1) => {
+                      console.log(error1);
                     });
-                },(error) => {
-                  console.log(error)
+                },(error2) => {
+                  console.log(error2);
                 });
-          },(error) => {
-            console.log(error)
-          })
-      },(error) => {
-        console.log(error)
-      })
+          },(error3) => {
+            console.log(error3);
+          });
+      },(error4) => {
+        console.log(error4);
+      });
     }
-  })
-})
+  });
+});
 
 let auth = new Vue({
   computed: {
     accessToken: {
       get: function () {
-        return localStorage.getItem('AccessToken')
+        return localStorage.getItem('AccessToken');
       },
       set: function (accessToken) {
-        localStorage.setItem('AccessToken', accessToken)
+        localStorage.setItem('AccessToken', accessToken);
       }
     },
     expiresAt: {
       get: function () {
-        return localStorage.getItem('expires_at')
+        return localStorage.getItem('expires_at');
       },
       set: function (expiresIn) {
-        let expiresAt = JSON.stringify(expiresIn * 1000 + new Date().getTime())
-        localStorage.setItem('expires_at', expiresAt)
+        let expiresAt = JSON.stringify(expiresIn * 1000 + new Date().getTime());
+        localStorage.setItem('expires_at', expiresAt);
       }
     },
     profile: {
       get: function () {
-        return JSON.parse(localStorage.getItem('profile'))
+        return JSON.parse(localStorage.getItem('profile'));
       },
       set: function (profile) {
-        localStorage.setItem('profile', JSON.stringify(profile))
+        localStorage.setItem('profile', JSON.stringify(profile));
       }
     }
   },
   methods: {
     login () {
-      webAuth.show()
+      webAuth.show();
     },
     callback () {
-      webAuth.show()
+      webAuth.show();
     },
     logout () {
       return new Promise((resolve, reject) => {
-        localStorage.removeItem('AccessToken')
-        localStorage.removeItem('expires_at')
-        localStorage.removeItem('profile')
-        localStorage.removeItem('operaciones')
-        localStorage.removeItem('nickname')
-        localStorage.removeItem('name')
+        localStorage.removeItem('AccessToken');
+        localStorage.removeItem('expires_at');
+        localStorage.removeItem('profile');
+        localStorage.removeItem('operaciones');
+        localStorage.removeItem('nickname');
+        localStorage.removeItem('name');
         // webAuth.logout()
-      })
+      });
     },
     isAuthenticated () {
-      return new Date().getTime() < localStorage.getItem('expires_at')
+      return new Date().getTime() < localStorage.getItem('expires_at');
     }
   }
-})
+});
 
 export default {
   install: function (Vue) {
-    Vue.prototype.$auth = auth
+    Vue.prototype.$auth = auth;
   }
-}
+};

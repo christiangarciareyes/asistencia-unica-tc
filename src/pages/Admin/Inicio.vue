@@ -33,10 +33,10 @@
               </div>
               <div class="col-lg-4 order-lg-3 order-1">
                 <div class="event_image">
-                  <img src="@/assets/img/event_1.jpg">
+                  <img src="@/assets/img/event_1.jpg" alt="image">
                 </div>
               </div>
-            </div>  
+            </div>
           </div>
         </div>
         <div class="row event_item">
@@ -56,10 +56,10 @@
               </div>
               <div class="col-lg-4 order-lg-3 order-1">
                 <div class="event_image">
-                  <img src="@/assets/img/event_2.jpg">
+                  <img src="@/assets/img/event_2.jpg" alt="image">
                 </div>
               </div>
-            </div>  
+            </div>
           </div>
         </div>
         <div class="row event_item">
@@ -79,10 +79,10 @@
               </div>
               <div class="col-lg-4 order-lg-3 order-1">
                 <div class="event_image">
-                  <img src="@/assets/img/event_4.jpg">
+                  <img src="@/assets/img/event_4.jpg" alt="image">
                 </div>
               </div>
-            </div>  
+            </div>
           </div>
         </div>
         <div class="row event_item">
@@ -102,10 +102,10 @@
               </div>
               <div class="col-lg-4 order-lg-3 order-1">
                 <div class="event_image">
-                  <img src="@/assets/img/event_3.jpg">
+                  <img src="@/assets/img/event_3.jpg" alt="image">
                 </div>
               </div>
-            </div>  
+            </div>
           </div>
         </div>
       </div>
@@ -118,7 +118,7 @@
 
 export default{
   created() {
-    if(localStorage.getItem('AccessToken') == null || localStorage.getItem('expires_at') == null || localStorage.getItem('profile') == null || localStorage.getItem('operaciones') == null || localStorage.getItem('nickname') == null){    
+    if(localStorage.getItem('AccessToken') == null || localStorage.getItem('expires_at') == null || localStorage.getItem('profile') == null || localStorage.getItem('operaciones') == null || localStorage.getItem('nickname') == null){
       this.$router.app.$auth.logout();
       this.$router.push({name: 'Portada'});
     }

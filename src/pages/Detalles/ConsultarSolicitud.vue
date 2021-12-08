@@ -1,8 +1,8 @@
 <template>
 <div class="content">
   <div>
-      <loading :active.sync="isLoading" 
-      :can-cancel="false" 
+      <loading :active.sync="isLoading"
+      :can-cancel="false"
       :is-full-page="true"></loading>
   </div>
   <div class="md-layout">
@@ -144,7 +144,7 @@
 
 <script>
 
-import datasource from 'vue-resource'
+
 import axios from 'axios'
 
 import Loading from 'vue-loading-overlay'
@@ -228,7 +228,7 @@ export default{
         if(this.estado == 1){
           this.variante = true;
         }
-      }   
+      }
     }else{
       this.$router.app.$auth.logout();
       this.$router.push({name: 'Portada'});
@@ -239,7 +239,7 @@ export default{
         this.$router.push('/detalleSolicitud/visorSolicitud');
      },
      derivando (){
-      this.isLoading = true; 
+      this.isLoading = true;
       if(this.respuesta != ''){
         let fromData = new FormData();
         fromData.append('codreclamo', this.codreclamo);
@@ -282,14 +282,14 @@ export default{
         fromData.append('idtipoasistencia', 2);
         axios.post(this.$store.state.serverAsistenciaAdmin + '/updateDerivado', fromData, {crossDomain: true, headers: {"Authorization": this.authorization}
         }).then((response) => {
-          this.isLoading = false; 
+          this.isLoading = false;
           this.atras();
-          this.notifyVue4();          
+          this.notifyVue4();
          },(error) => {
             this.isLoading = false;
          });
       }else{
-        this.isLoading = false; 
+        this.isLoading = false;
         this.notifyVue();
       }
      },

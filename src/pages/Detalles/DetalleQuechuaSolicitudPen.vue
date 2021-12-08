@@ -1,8 +1,8 @@
 <template>
 <div class="content">
   <div>
-      <loading :active.sync="isLoading" 
-      :can-cancel="false" 
+      <loading :active.sync="isLoading"
+      :can-cancel="false"
       :is-full-page="true"></loading>
   </div>
   <div class="md-layout">
@@ -40,7 +40,7 @@
                 <label class="labelInput">AUDIO EN QUECHUA</label>
                 <b-form-input style="border-radius: 0px" class="imp-fue mb-3" type="text" v-model="audio" disabled/>
                 <div class="container-form-btn fonTap m-t-40">
-                    <iframe style="height: 200px; width: 100%" class="embed-responsive-item" :src="ruta" allowfullscreen></iframe>
+                    <iframe title="iframe" style="height: 200px; width: 100%" class="embed-responsive-item" :src="ruta" allowfullscreen></iframe>
                 </div>
                 <div class="container-form-btn fonTap m-t-40">
                   <button v-if="traducirx" v-on:click="traducir" class="routing2-form-btn m-r-10 m-l-10 mb-3 fuente"> GESTIONAR TRADUCCIÓN</button>
@@ -141,7 +141,7 @@
                 <div class="m-t-20" v-if="atendido">
                   <div class="news_post_text">
                     <p>1. El boton <a style="text-decoration: none; color: red">Enviar Atención</a> se usa para dar una respuesta final sobre la solicitud registrada. Se enviará un correo electrónico al destinatario con el contenido que complete abajo.</p>
-                    <p style="margin-top: -15px">2. El boton <a style="text-decoration: none; color: red">Enviar Archivo</a> se usará si la respuesta debe contener un archivo que puede ser un documento, imagen o video. Al darle clic, el sistema lo llevará 
+                    <p style="margin-top: -15px">2. El boton <a style="text-decoration: none; color: red">Enviar Archivo</a> se usará si la respuesta debe contener un archivo que puede ser un documento, imagen o video. Al darle clic, el sistema lo llevará
                       a un apartado en donde deberá subir el archivo y enviar un correo al destinatario final.</p>
                     <p style="margin-top: -15px">3. Recordar que el archivo una vez enviado solo estará disponible para su descarga hasta 6 días despues de haber enviado y que solo podrá ser descargado máximo 3 veces.</p>
                   </div>
@@ -172,7 +172,7 @@
 
 <script>
 
-import datasource from 'vue-resource'
+
 import axios from 'axios'
 
 import Loading from 'vue-loading-overlay'
@@ -232,9 +232,9 @@ export default{
       if(this.$store.state.solicitudQue == ''){
         this.$router.go(-1);
       }else{
-        this.isLoading = true; 
+        this.isLoading = true;
         this.cargaUsuarios();
-      }     
+      }
     }else{
       this.$router.app.$auth.logout();
       this.$router.push({name: 'Portada'});
@@ -242,7 +242,7 @@ export default{
   },
   methods: {
      enviarArchivo(){
-        window.open("https://sharing.oodrive.com/auth/ws/tcperu/?service=share","_blank") 
+        window.open("https://sharing.oodrive.com/auth/ws/tcperu/?service=share","_blank")
      },
      verPdf(){
         this.$router.push('/detalleSolicitud/visorSolicitud');
@@ -261,7 +261,7 @@ export default{
              });
              this.llenado();
              this.validacion();
-             this.isLoading = false; 
+             this.isLoading = false;
           },(error) => {
 
         });
@@ -279,19 +279,19 @@ export default{
           this.derivarx = true;
           this.porderivar = true;
           this.atenderx = true;
-        }else if(this.estado == 3){
+        }else if(this.estado == 3 || this.estado == 4 || this.estado == 5){
           this.traducirx = true;
           this.yatraducido = true;
           this.derivarx = true;
           this.yaderivado = true;
           this.atenderx = true;
-        }else if(this.estado == 4 || this.estado == 5){
-          this.traducirx = true;
-          this.yatraducido = true;
-          this.derivarx = true;
-          this.yaderivado = true;
-          this.atenderx = true;
-        }else{}
+        }
+
+
+
+
+
+
      },
      derivar (){
        this.traducido = false;
@@ -309,7 +309,7 @@ export default{
        this.traducido = true;
      },
      enviar (){
-        this.isLoading = true; 
+        this.isLoading = true;
         if(this.atencion != ''){
           let fromData = new FormData();
           fromData.append('codreclamo', this.codreclamo);
@@ -323,20 +323,20 @@ export default{
           fromData.append('iddetalletipoasistencia', this.idregistro);
           axios.post(this.$store.state.serverAsistenciaAdmin + '/updateSolicitudQue2', fromData, {crossDomain: true, headers: {"Authorization": this.authorization}
           }).then((response) => {
-            this.isLoading = false; 
+            this.isLoading = false;
             this.atras();
-            this.notifyVue4();          
+            this.notifyVue4();
            },(error) => {
               this.isLoading = false;
            });
         }else{
-          this.isLoading = false; 
+          this.isLoading = false;
           this.notifyVue();
         }
      },
      derivando (){
         if(this.item.value != '' != '' && this.derivacion2 != ''){
-          this.isLoading = true; 
+          this.isLoading = true;
           let fromData = new FormData();
           fromData.append('codreclamo', this.codreclamo);
           fromData.append('fecreclamo', this.fecreclamo);
@@ -357,20 +357,20 @@ export default{
           fromData.append('iddetalletipoasistencia', this.idregistro);
           axios.post(this.$store.state.serverAsistenciaAdmin + '/updateSolicitudQue', fromData, {crossDomain: true, headers: {"Authorization": this.authorization}
           }).then((response) => {
-            this.isLoading = false; 
+            this.isLoading = false;
             this.atras();
-            this.notifyVue2();          
+            this.notifyVue2();
            },(error) => {
               this.isLoading = false;
            });
         }else{
-          this.isLoading = false; 
+          this.isLoading = false;
           this.notifyVue();
         }
      },
      traduciendo(){
         if(this.traduccion2 != ''){
-          this.isLoading = true; 
+          this.isLoading = true;
           let fromData = new FormData();
           fromData.append('codreclamo', this.codreclamo);
           fromData.append('fecreclamo', this.fecreclamo);
@@ -392,19 +392,19 @@ export default{
           fromData.append('iddetalletipoasistencia', this.idregistro);
           axios.post(this.$store.state.serverAsistenciaAdmin + '/traducirSolicitudQue', fromData, {crossDomain: true, headers: {"Authorization": this.authorization}
           }).then((response) => {
-            this.isLoading = false; 
+            this.isLoading = false;
             this.atras();
-            this.notifyVue5();          
+            this.notifyVue5();
            },(error) => {
               this.isLoading = false;
            });
         }else{
-          this.isLoading = false; 
+          this.isLoading = false;
           this.notifyVue();
         }
      },
      corregir (){
-        this.isLoading = true; 
+        this.isLoading = true;
         let fromData = new FormData();
         fromData.append('codreclamo', this.codreclamo);
         fromData.append('fecreclamo', this.fecreclamo);
@@ -431,14 +431,14 @@ export default{
           this.porderivar = true;
           this.envio = true;
           this.isLoading = false;
-          this.notifyVue3();          
+          this.notifyVue3();
          },(error) => {
             this.isLoading = false;
          });
      },
      corregir2(){
       if(this.estado == 0 || this.estado == 1 || this.estado == 2){
-        this.isLoading = true; 
+        this.isLoading = true;
         let fromData = new FormData();
         fromData.append('codreclamo', this.codreclamo);
         fromData.append('fecreclamo', this.fecreclamo);
@@ -465,12 +465,12 @@ export default{
           this.portraducir = true;
           this.envio = true;
           this.isLoading = false;
-          this.notifyVue3();          
+          this.notifyVue3();
          },(error) => {
             this.isLoading = false;
         });
       }else{
-          this.notifyVue6();   
+          this.notifyVue6();
       }
      },
      atras (){

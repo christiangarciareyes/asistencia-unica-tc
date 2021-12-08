@@ -22,8 +22,8 @@
 
 <script>
 
-import IntroReclamosQue from 'src/pages/Vistas/IntroReclamosQue'	
-import AudioReclamosQue from 'src/pages/Vistas/AudioReclamosQue'   
+import IntroReclamosQue from 'src/pages/Vistas/IntroReclamosQue'
+import AudioReclamosQue from 'src/pages/Vistas/AudioReclamosQue'
 import ExtTopNavbarQue from 'src/pages/Layout/ExtTopNavbarQue.vue'
 import ExtContentFooter from 'src/pages/Layout/ExtContentFooter.vue'
 
@@ -42,8 +42,8 @@ export default {
   },
   mounted(){
     if(localStorage.getItem('AccessToken') != null && localStorage.getItem('expires_at') != null && localStorage.getItem('profile') != null && localStorage.getItem('operaciones') != null && localStorage.getItem('nickname') != null){
-      this.$router.push('/inicio');     
-    }else{}
+      this.$router.push('/inicio');
+    }
   },
   methods: {
     formulario() {

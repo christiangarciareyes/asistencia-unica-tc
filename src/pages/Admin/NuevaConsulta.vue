@@ -1,8 +1,8 @@
 <template>
 <div class="content">
   <div>
-      <loading :active.sync="isLoading" 
-      :can-cancel="false" 
+      <loading :active.sync="isLoading"
+      :can-cancel="false"
       :is-full-page="true"></loading>
   </div>
   <div class="md-layout">
@@ -90,7 +90,7 @@
 
 <script>
 
-import datasource from 'vue-resource'
+
 import axios from 'axios'
 
 import Loading from 'vue-loading-overlay'
@@ -115,7 +115,7 @@ export default{
       correo: '',
       correo2: '',
       celular: '',
-      detalle: '',
+
       expediente: '',
       canales: [],
       isLoading: false,
@@ -145,7 +145,7 @@ export default{
   },
   created() {
     if(localStorage.getItem('AccessToken') != null && localStorage.getItem('expires_at') != null && localStorage.getItem('profile') != null && localStorage.getItem('operaciones') != null && localStorage.getItem('nickname') != null){
-      this.isLoading = true; 
+      this.isLoading = true;
       this.cargaCanales();
     }else{
       this.$router.app.$auth.logout();
@@ -197,14 +197,14 @@ export default{
                 this.options3.push({ value: item.nid, text: item.ctxt_descripcion });
             });
             this.isLoading = false;
-        },(error) => {}); 
+        },(error) => {});
      },
      validEmail: function(email) {
 	      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	      return re.test(email);
 	   },
      guardar(){
-        if(this.tipodoc !== '' && this.numdoc !== '' && this.nombres !== '' && this.correo !== '' && this.celular !== '' && this.detalle !== '' && 
+        if(this.tipodoc !== '' && this.numdoc !== '' && this.nombres !== '' && this.correo !== '' && this.celular !== '' && this.detalle !== '' &&
         this.item2.text !== '' && this.item.text !== ''){
           if(this.numdoc.length == 8){
             if(!this.validEmail(this.correo)){
@@ -241,7 +241,7 @@ export default{
         if(this.expediente == ''){
            this.expediente = '--'
         }
-        this.isLoading = true; 
+        this.isLoading = true;
         let fromData = new FormData();
         fromData.append('documento', this.tipodoc);
         fromData.append('numero', this.numdoc);

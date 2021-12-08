@@ -29,9 +29,9 @@
 
 <script>
 
-import IntroReclamos from 'src/pages/Vistas/IntroReclamos'	
-import FormularioReclamos from 'src/pages/Vistas/FormularioReclamos'  
-import ConsultaReclamos from 'src/pages/Vistas/ConsultaReclamos'  
+import IntroReclamos from 'src/pages/Vistas/IntroReclamos'
+import FormularioReclamos from 'src/pages/Vistas/FormularioReclamos'
+import ConsultaReclamos from 'src/pages/Vistas/ConsultaReclamos'
 import ExtTopNavbar from 'src/pages/Layout/ExtTopNavbar.vue'
 import ExtContentFooter from 'src/pages/Layout/ExtContentFooter.vue'
 
@@ -52,8 +52,8 @@ export default {
   },
   mounted(){
     if(localStorage.getItem('AccessToken') != null && localStorage.getItem('expires_at') != null && localStorage.getItem('profile') != null && localStorage.getItem('operaciones') != null && localStorage.getItem('nickname') != null){
-      this.$router.push('/inicio');     
-    }else{}
+      this.$router.push('/inicio');
+    }
   },
   methods: {
     formulario() {

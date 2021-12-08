@@ -1,8 +1,8 @@
 <template>
 <div class="content">
   <div>
-      <loading :active.sync="isLoading" 
-      :can-cancel="false" 
+      <loading :active.sync="isLoading"
+      :can-cancel="false"
       :is-full-page="true"></loading>
   </div>
   <div class="md-layout">
@@ -55,11 +55,11 @@
                       <br><br>
                   </div>
                 </div>
-                <b-table bordered 
+                <b-table bordered
                          class="imp-fue m-t-10"
                          show-empty
                          stacked="lg"
-                         :items="lista" 
+                         :items="lista"
                          :fields="fields"
                          :current-page="currentPage"
                          :per-page="perPage"
@@ -106,8 +106,8 @@
                     </template>
                     <template slot="estado" slot-scope="row">
                       <p v-if="row.item.nflg_estado == 0" class="labelInput imp-fue">PENDIENTE</p>
-                      <p v-if="row.item.nflg_estado == 1" class="labelInput imp-fue">DERIVADO</p> 
-                      <p v-if="row.item.nflg_estado == 2" class="labelInput imp-fue">RESPONDIDO</p> 
+                      <p v-if="row.item.nflg_estado == 1" class="labelInput imp-fue">DERIVADO</p>
+                      <p v-if="row.item.nflg_estado == 2" class="labelInput imp-fue">RESPONDIDO</p>
                     </template>
                     <template slot="ver" slot-scope="row">
                       <button @click="verDoc(row.item)" type="button" class="btn-success-circle btn btn-xs" v-b-tooltip.hover title="Ver Consulta" ><i class="fa fa-external-link p-r-3"></i></button>
@@ -144,11 +144,11 @@
                       <br><br>
                   </div>
                 </div>
-                <b-table bordered 
+                <b-table bordered
                          class="imp-fue m-t-10"
                          show-empty
                          stacked="lg"
-                         :items="lista2" 
+                         :items="lista2"
                          :fields="fields2"
                          :current-page="currentPage2"
                          :per-page="perPage2"
@@ -239,7 +239,7 @@
 
 <script>
 
-import datasource from 'vue-resource'
+
 import axios from 'axios'
 
 import Loading from 'vue-loading-overlay'
@@ -247,9 +247,9 @@ import 'vue-loading-overlay/dist/vue-loading.css'
 
 import moment from 'moment';
 import Datepicker from "vuejs-datepicker/dist/vuejs-datepicker.esm.js";
-import * as lang from "vuejs-datepicker/src/locale";
 
-import {en, es} from 'vuejs-datepicker/dist/locale';
+
+import {es} from 'vuejs-datepicker/dist/locale';
 
 export default{
   data () {
@@ -351,7 +351,7 @@ export default{
   },
   created() {
     if(localStorage.getItem('AccessToken') != null || localStorage.getItem('expires_at') != null || localStorage.getItem('profile') != null || localStorage.getItem('operaciones') != null || localStorage.getItem('nickname') != null){
-      this.cargaView();      
+      this.cargaView();
     }else{
       this.$router.app.$auth.logout();
       this.$router.push({name: 'Portada'});
@@ -378,9 +378,9 @@ export default{
        this.$router.push('/consultas/detalleConsultaAte');
     },
     cargaView(){
-      this.isLoading = true; 
+      this.isLoading = true;
       axios.get(this.$store.state.autenticacion + '/operaciones//app2/PAUC/'+ this.name + '/' + this.usuario, {
-      crossdomain: true, 
+      crossdomain: true,
       headers: {
         Authorization: this.authorization
       }
@@ -388,14 +388,14 @@ export default{
         this.auto = response.data;
         if(this.auto.codError == 1){
           this.consultar1(1);
-        }else{ 
+        }else{
           this.isLoading = false;
           this.$router.go(-1);
         }
       });
     },
     alertar(datos){
-        this.isLoading = true; 
+        this.isLoading = true;
         let fromData = new FormData();
         fromData.append('codreclamo', datos.cnum_numperio);
         fromData.append('fecreclamo', datos.dfec_registro);
@@ -420,9 +420,9 @@ export default{
         fromData.append('idtipoasistencia', 3);
         axios.post(this.$store.state.serverAsistenciaAdmin + '/derivarConsulta', fromData, {crossDomain: true, headers: {"Authorization": this.authorization}
         }).then((response) => {
-          this.isLoading = false; 
-          this.notifyVue4(); 
-          this.consultar1(1);      
+          this.isLoading = false;
+          this.notifyVue4();
+          this.consultar1(1);
         },(error) => {
           this.isLoading = false;
         });
@@ -434,7 +434,7 @@ export default{
       }else{
           anio = moment(this.periodopen).format('YYYY');
       }
-      this.isLoading = true; 
+      this.isLoading = true;
       axios.get(this.$store.state.serverAsistenciaAdmin + '/listConsultasPendientes?periodo=' + anio,  {crossdomain: true,
       headers: {
         Authorization: this.authorization
@@ -453,16 +453,16 @@ export default{
             }
           },(error) => {
             this.notifyVue();
-      }); 
+      });
     },
     consultar2(param){
-      var anio = '';      
+      var anio = '';
       if(param == 1){
           anio = ''+new Date().getFullYear();
       }else{
           anio = moment(this.periodoate).format('YYYY');
       }
-      this.isLoading = true; 
+      this.isLoading = true;
       axios.get(this.$store.state.serverAsistenciaAdmin + '/listConsultasAtendidas?periodo=' + anio,  {crossdomain: true,
       headers: {
         Authorization: this.authorization
@@ -477,7 +477,7 @@ export default{
             this.isLoading = false;
           },(error) => {
             this.notifyVue();
-      }); 
+      });
     },
     notifyVue() {
        this.$notify(
@@ -506,7 +506,7 @@ export default{
         }else{
           tipo = '1';
         }
-        this.isLoading = true; 
+        this.isLoading = true;
         axios.get(this.$store.state.serverAsistenciaAdmin + '/listReporteConsultas?anio=' + anio + '&mes=' + mes + '&tipo=' + tipo + '&usuario=' + this.usuario,  {crossdomain: true,
         headers: {
           Authorization: this.authorization
@@ -522,7 +522,7 @@ export default{
               }
             },(error) => {
               this.notifyVue();
-        }); 
+        });
       }else{
         this.$notify(
           {

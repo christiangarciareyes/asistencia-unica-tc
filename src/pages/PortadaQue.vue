@@ -71,8 +71,8 @@ export default{
   },
   mounted: function () {
     if(localStorage.getItem('AccessToken') != null && localStorage.getItem('expires_at') != null && localStorage.getItem('profile') != null && localStorage.getItem('operaciones') != null && localStorage.getItem('nickname') != null){
-      this.$router.push('/inicio');    
-    }else{}
+      this.$router.push('/inicio');
+    }
   },
   computed: {
     isLogedIn(){

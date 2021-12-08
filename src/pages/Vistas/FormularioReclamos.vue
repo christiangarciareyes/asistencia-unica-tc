@@ -1,8 +1,8 @@
 <template>
 	<div class="news2">
 	    <div>
-	        <loading :active.sync="isLoading" 
-            :can-cancel="false" 
+	        <loading :active.sync="isLoading"
+            :can-cancel="false"
 	        :is-full-page="true"></loading>
 	    </div>
 		<div class="container">
@@ -119,7 +119,7 @@
 					<li style="margin-bottom: 30px; color: #333"><i style="font-size: 10px; margin-right: 10px" class="fa fa-circle" aria-hidden="true"></i>Los reclamos se atenderán los días Lunes a Viernes; en caso se registre el reclamo los días sabados, domingos o feriados
 						serán atendidos en el siguiente día habil.</li>
 				</ul>
-			<b-button class="mt-3" variant="outline-primary" block @click="hideModal">HE LEÍDO LAS CONDICIONES</b-button>			
+			<b-button class="mt-3" variant="outline-primary" block @click="hideModal">HE LEÍDO LAS CONDICIONES</b-button>
 		</b-modal>
 	  </div>
 	</div>
@@ -128,7 +128,7 @@
 
 <script>
 
-import datasource from 'vue-resource'
+
 import axios from 'axios'
 
 import Loading from 'vue-loading-overlay'
@@ -205,7 +205,7 @@ export default {
 	  validar(){
 	    if(this.documento == 'MENOR DE EDAD'){
             if(this.reclamo == 'QUEJA'){
-               if(this.numero != '' && this.nombres != '' && this.apoderado != '' && this.email != '' && this.funcionario != '' && 
+               if(this.numero != '' && this.nombres != '' && this.apoderado != '' && this.email != '' && this.funcionario != '' &&
                	  this.cargo != '' && this.detalle != '' && this.pedido != ''){
 	              if (!this.validEmail(this.email)) {
 	                  this.correofallido();
@@ -247,7 +247,7 @@ export default {
 	           }else{
                   this.camposVacios();
 	           }
-            }          
+            }
 	  	}
 	  },
 	  enviar(){
@@ -286,7 +286,7 @@ export default {
 	      },(error) => {
 	        this.isLoading = false;
 	  		this.notifyVue();
-	      }); 
+	      });
 	  },
 	  nuevo(){
 	  	this.limpiar();
@@ -338,7 +338,7 @@ export default {
 	      this.detalle = ''
 	      this.pedido = ''
       }
-  },   
+  },
   components: {
   	Loading
   }

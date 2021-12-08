@@ -53,19 +53,19 @@
                 </div>
                </a>
               </div>
-              <!--
-              <div class="col-lg-4 hero_box_col">
-               <router-link to="/quechua">
-                <div class="hero_box d-flex flex-row align-items-center justify-content-start">
-                  <i class="fa fa-language fa-3x m-r-10" aria-hidden="true" style="color: #fff"></i>
-                  <div class="hero_box_content">
-                    <h2 class="hero_box_title">Kichwa simipi lika</h2>
-                    <a class="hero_box_link" style="color: #fff">Likata tikray</a>
-                  </div>
-                </div>
-               </router-link>
-              </div>
-              -->
+
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
           </div>
         </div>
@@ -84,8 +84,8 @@ export default{
   },
   mounted: function () {
     if(localStorage.getItem('AccessToken') != null && localStorage.getItem('expires_at') != null && localStorage.getItem('profile') != null && localStorage.getItem('operaciones') != null && localStorage.getItem('nickname') != null){
-      this.$router.push('/inicio');    
-    }else{}
+      this.$router.push('/inicio');
+    }
   },
   computed: {
     isLogedIn(){

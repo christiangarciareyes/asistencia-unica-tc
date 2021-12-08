@@ -29,9 +29,9 @@
 
 <script>
 
-import IntroSolicitudes from 'src/pages/Vistas/IntroSolicitudes'  
-import FormularioSolicitudes from 'src/pages/Vistas/FormularioSolicitudes'  
-import ConsultaSolicitudes from 'src/pages/Vistas/ConsultaSolicitudes'  
+import IntroSolicitudes from 'src/pages/Vistas/IntroSolicitudes'
+import FormularioSolicitudes from 'src/pages/Vistas/FormularioSolicitudes'
+import ConsultaSolicitudes from 'src/pages/Vistas/ConsultaSolicitudes'
 import ExtTopNavbar from 'src/pages/Layout/ExtTopNavbar.vue'
 import ExtContentFooter from 'src/pages/Layout/ExtContentFooter.vue'
 
@@ -45,8 +45,8 @@ export default {
   },
   mounted(){
     if(localStorage.getItem('AccessToken') != null && localStorage.getItem('expires_at') != null && localStorage.getItem('profile') != null && localStorage.getItem('operaciones') != null && localStorage.getItem('nickname') != null){
-      this.$router.push('/inicio');     
-    }else{}
+      this.$router.push('/inicio');
+    }
   },
   components: {
     IntroSolicitudes,

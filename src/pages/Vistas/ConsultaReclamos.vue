@@ -1,8 +1,8 @@
 <template>
 	<div class="news2 m-b-30">
 	    <div>
-	        <loading :active.sync="isLoading" 
-            :can-cancel="false" 
+	        <loading :active.sync="isLoading"
+            :can-cancel="false"
 	        :is-full-page="true"></loading>
 	    </div>
 		<div class="container">
@@ -40,11 +40,11 @@
 							    <button v-on:click="buscar" class="routing2-form-btn m-r-10 m-l-10 fuente"> BUSCAR RECLAMO</button>
 							  </div>
 							  <transition name="fade" mode="out-in">
-							  <b-table bordered 
+							  <b-table bordered
 							           class="imp-fue m-t-30"
 							           show-empty
 						               stacked="lg"
-						               :items="lista" 
+						               :items="lista"
 						               :fields="fields"
 						               v-if="tabla">
 							      <template slot="dni" slot-scope="row">
@@ -55,7 +55,7 @@
 							      </template>
 							      <template slot="estado" slot-scope="row">
 							        <p v-if="row.item.nflg_estado == 0 || row.item.nflg_estado == 1 || row.item.nflg_estado == 2" class="labelInput imp-fue">PENDIENTE</p>
-							        <p v-if="row.item.nflg_estado == 3" class="labelInput imp-fue">ATENDIDO</p>		        	
+							        <p v-if="row.item.nflg_estado == 3" class="labelInput imp-fue">ATENDIDO</p>
 							     </template>
 							      <template slot="ver" slot-scope="row">
 							        <button @click="verDoc(row.item)" type="button" class="btn-success-circle btn btn-xs" v-b-tooltip.hover title="Ver Reclamo" ><i class="fa fa-external-link p-r-3"></i></button>
@@ -77,15 +77,15 @@
 
 <script>
 
-import datasource from 'vue-resource'
+
 import axios from 'axios'
 
-import DetalleReclamo from 'src/pages/Vistas/DetalleReclamo'	
-import { actions } from "vuex";
+import DetalleReclamo from 'src/pages/Vistas/DetalleReclamo'
+
 
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/vue-loading.css'
-  
+
 export default {
   data () {
     return {
@@ -131,7 +131,7 @@ export default {
 	          },(error) => {
 	            this.isLoading = false;
 	      		this.notifyVue();
-	          }); 
+	          });
       }else if (this.dni != '' && this.numero == ''){
 	      axios.get(this.$store.state.serverAsistenciaPublic + '/listReclamosPublic?cnum_doc=' +  this.dni + '&cnum_numperio=' + this.numero, {crossdomain: true
 	      }).then((response) => {
@@ -168,7 +168,7 @@ export default {
       	this.isLoading = false;
       }
 	  },
-	  verDoc (item) {  
+	  verDoc (item) {
         this.$store.commit('consulReclamo', item);
         this.macro = false;
         this.micro = true;

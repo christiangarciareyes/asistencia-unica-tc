@@ -1,8 +1,8 @@
 <template>
 	<div class="news2">
 	    <div>
-	        <loading :active.sync="isLoading" 
-            :can-cancel="false" 
+	        <loading :active.sync="isLoading"
+            :can-cancel="false"
 	        :is-full-page="true"></loading>
 	    </div>
 		<div class="container">
@@ -83,10 +83,10 @@
 					<li style="margin-bottom: 10px; color: #333"><i style="font-size: 10px; margin-right: 10px" class="fa fa-circle" aria-hidden="true"></i>Kutichimunapaq correo electrónico nisqata qillqanayki (Buzón nisqa ama huntapasqachu kanan, huk wasikunamantapas correo nisqakunata chaskiyta atinan, huk mañakuykunapas).</li>
 					<li style="margin-bottom: 30px; color: #333"><i style="font-size: 10px; margin-right: 10px" class="fa fa-circle" aria-hidden="true"></i>Reclamokunatam chaskiyku killachawmanta chaskachaw punchawkama; kuychichaw, intichaw utaq huk samana punchawpi raclamota churaruptikiqa, llamkana punchawpim kutichimusqaykiku.</li>
 				</ul>
-			<b-button v-if="moneySendS02" @click="sendMoneyS02(2)" class="mt-3" variant="outline-success" block>DETENER AUDIO</b-button>	
-			<b-button v-if="!moneySendS02" @click="sendMoneyS02(1)" class="mt-3" variant="outline-success" block>ESCUCHAR AUDIO</b-button>	
-			<b-button v-if="moneySendS02" @click="sendMoneyS02(3)" class="mt-3" variant="outline-success" block>PAUSAR AUDIO</b-button>	
-			<b-button class="mt-3" variant="outline-primary" block @click="hideModal">MAÑAKUYKUNATAM ARÍ NINI</b-button>			
+			<b-button v-if="moneySendS02" @click="sendMoneyS02(2)" class="mt-3" variant="outline-success" block>DETENER AUDIO</b-button>
+			<b-button v-if="!moneySendS02" @click="sendMoneyS02(1)" class="mt-3" variant="outline-success" block>ESCUCHAR AUDIO</b-button>
+			<b-button v-if="moneySendS02" @click="sendMoneyS02(3)" class="mt-3" variant="outline-success" block>PAUSAR AUDIO</b-button>
+			<b-button class="mt-3" variant="outline-primary" block @click="hideModal">MAÑAKUYKUNATAM ARÍ NINI</b-button>
 		</b-modal>
 	  </div>
 	</div>
@@ -95,9 +95,9 @@
 
 <script>
 
-import FileUpload from 'vue-upload-component'
 
-import datasource from 'vue-resource'
+
+
 import axios from 'axios'
 
 import Loading from 'vue-loading-overlay'
@@ -190,10 +190,10 @@ export default {
       hideModal() {
         this.$refs['my-modal'].hide()
       },
-	  enviar(){
-        this.macro = false;
-        this.micro = true;
-	  },
+
+
+
+
 	  validar(){
 	    if(this.audio == ''){
             this.camposVacios();
@@ -228,7 +228,7 @@ export default {
 	      },(error) => {
 	        this.isLoading = false;
 	  		this.notifyVue();
-          }); 
+          });
 	  },
 	  nuevo(){
 	  	this.limpiar();

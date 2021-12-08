@@ -31,7 +31,7 @@
                       <input class="form-control" :max="numPages" min="1" v-model.number="page" type="text" style="height:35px">
                       <input class="form-control" v-model="numPages" type="text" style="height:35px; background-color:#EAEDED" disabled>
                       <button v-b-tooltip.hover title="Anterior" style="margin-left:10px; margin-right:8px;" @click="anterior" type="button" class="opciones-form-btn fuente margin"><i class="fa fa-chevron-left"></i></button>
-                      <button  v-b-tooltip.hover title="Siguiente" @click="siguiente" type="button" class="opciones-form-btn fuente margin"><i class="fa fa-chevron-right m-l-5"></i></button> 
+                      <button  v-b-tooltip.hover title="Siguiente" @click="siguiente" type="button" class="opciones-form-btn fuente margin"><i class="fa fa-chevron-right m-l-5"></i></button>
                     </div>
                   </div>
                   <div class="col-md-2"></div>
@@ -50,7 +50,7 @@
                   </div>
                   <pdf v-if="show" ref="pdf" style="border: 2px solid black" :src="pdfSrc" :page="page" :rotate="rotate"  @progress="loadedRatio = $event" @error="error" @num-pages="numPages = $event" @link-clicked="page = $event" loaded>
                   </pdf>
-            </template> 
+            </template>
         </div>
         <div class="footer m-b-10" v-if="show">
           <hr>
@@ -61,7 +61,7 @@
           </div>
           </div>
           <div class="col-md-2">
-          <button v-b-tooltip.hover title="Anterior" style="margin-left:10px; margin-right:8px" @click="siguiente" type="button" class="opciones-form-btn fuente margin pull-right"><i class="fa fa-chevron-right m-l-5"></i></button> 
+          <button v-b-tooltip.hover title="Anterior" style="margin-left:10px; margin-right:8px" @click="siguiente" type="button" class="opciones-form-btn fuente margin pull-right"><i class="fa fa-chevron-right m-l-5"></i></button>
           <button v-b-tooltip.hover title="Siguiente" @click="anterior" type="button" class="opciones-form-btn fuente margin pull-right"><i class="fa fa-chevron-left"></i></button>
           </div>
           </div>
@@ -79,8 +79,8 @@
 
 <script>
 
-import datasource from 'vue-resource'
-import axios from 'axios'
+
+
 
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/vue-loading.css'
@@ -88,7 +88,7 @@ import 'vue-loading-overlay/dist/vue-loading.css'
 import { ModelSelect } from 'vue-search-select'
 
 import pdf from 'vue-pdf'
-import { Base64 } from 'js-base64'
+
 
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
@@ -143,7 +143,7 @@ export default{
         this.$router.go(-1);
       }else{
         this.llenado();
-      }   
+      }
     }else{
       this.$router.app.$auth.logout();
       this.$router.push({name: 'Portada'});
@@ -223,10 +223,10 @@ export default{
      verifyPdf(){
         if(this.pdfSrc.data == ''){
           this.page= '';
-          this.show= false;   
+          this.show= false;
         }else{
           this.page= 1;
-          this.show= true; 
+          this.show= true;
           this.notifyVue()
         }
      },
@@ -275,14 +275,14 @@ export default{
             content: [
                 {
                     columns: [
-                    {   
+                    {
                     width: 200,
                     stack: [
                     {
                         text: 'TRIBUNAL CONSTITUCIONAL DEL PERÚ', style: 'subheader'
                     },
                     {
-                        text: 'VENTANILLA ADMINISTRATIVA', style: 'subheader', color: 'gray' 
+                        text: 'VENTANILLA ADMINISTRATIVA', style: 'subheader', color: 'gray'
                     },
                     ]
                     },
@@ -346,7 +346,7 @@ export default{
                 },
                 {
                     columns: [
-                    {   
+                    {
                         width: 500,
                         margin: [0, 10],
                         text: [
@@ -367,7 +367,7 @@ export default{
                 },
                 {
                     columns: [
-                    {   
+                    {
                         width: 500,
                         margin: [0, 10],
                         text: [
@@ -383,7 +383,7 @@ export default{
                         ]
                     },
                     ]
-                },                    
+                },
             ],
             styles: {
                 header: {
@@ -412,7 +412,7 @@ export default{
             const pdfDocGenerator = pdfMake.createPdf(docDefinition);
             pdfDocGenerator.getBase64((bytes) => {
                 var binaryVersionOfThePdf = base64ToString(bytes);
-                this.pdfSrc = {data: binaryVersionOfThePdf}; 
+                this.pdfSrc = {data: binaryVersionOfThePdf};
                 this.verifyPdf();
             });
      }

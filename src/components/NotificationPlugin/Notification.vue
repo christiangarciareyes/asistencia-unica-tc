@@ -110,13 +110,13 @@ export default {
     cursor: pointer;
     position: fixed;
     width: 20%;
-    font-family: 'Segoe UI';
+    font-family: 'Segoe UI',serif;
 
     &.center {
       left: 0;
       right: 0;
-      margin-left: auto;
-      margin-right: auto;
+
+
       margin: 0 auto;
 
     }

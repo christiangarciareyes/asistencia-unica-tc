@@ -1,8 +1,8 @@
 <template>
 <div class="content">
   <div>
-      <loading :active.sync="isLoading" 
-      :can-cancel="false" 
+      <loading :active.sync="isLoading"
+      :can-cancel="false"
       :is-full-page="true"></loading>
   </div>
   <div class="md-layout">
@@ -130,7 +130,7 @@
                 <div class="m-t-20" v-if="atendido">
                 <div class="news_post_text">
                   <p>1. El boton <a style="text-decoration: none; color: red">Enviar Atención</a> se usa para dar una respuesta final sobre el reclamo registrado. Se enviará un correo electrónico al destinatario con el contenido que complete abajo.</p>
-                  <p style="margin-top: -15px">2. El boton <a style="text-decoration: none; color: red">Enviar Archivo</a> se usará si la respuesta debe contener un archivo que puede ser un documento, imagen o video. Al darle clic, el sistema lo llevará 
+                  <p style="margin-top: -15px">2. El boton <a style="text-decoration: none; color: red">Enviar Archivo</a> se usará si la respuesta debe contener un archivo que puede ser un documento, imagen o video. Al darle clic, el sistema lo llevará
                     a un apartado en donde deberá subir el archivo y enviar un correo al destinatario final.</p>
                   <p style="margin-top: -15px">3. Recordar que el archivo una vez enviado solo estará disponible para su descarga hasta 6 días despues de haber enviado y que solo podrá ser descargado máximo 3 veces.</p>
                 </div>
@@ -161,7 +161,7 @@
 
 <script>
 
-import datasource from 'vue-resource'
+
 import axios from 'axios'
 
 import Loading from 'vue-loading-overlay'
@@ -217,9 +217,9 @@ export default{
       if(this.$store.state.reclamo == ''){
         this.$router.go(-1);
       }else{
-        this.isLoading = true; 
+        this.isLoading = true;
         this.cargaUsuarios();
-      }   
+      }
     }else{
       this.$router.app.$auth.logout();
       this.$router.push({name: 'Portada'});
@@ -235,7 +235,7 @@ export default{
         });
      },
      enviarArchivo(){
-        window.open("https://sharing.oodrive.com/auth/ws/tcperu/?service=share","_blank") 
+        window.open("https://sharing.oodrive.com/auth/ws/tcperu/?service=share","_blank")
      },
      verPdf(){
         this.$router.push('/detalleReclamo/visorReclamo');
@@ -254,7 +254,7 @@ export default{
              });
              this.llenado();
              this.validacion();
-             this.isLoading = false; 
+             this.isLoading = false;
           },(error) => {
 
         });
@@ -264,7 +264,7 @@ export default{
           this.porderivar = true;
         }else if(this.estado == 1 || this.estado == 2){
           this.yaderivado = true;
-        }else{}
+        }
      },
      derivar (){
        this.atendido = false;
@@ -275,7 +275,7 @@ export default{
        this.atendido = true;
      },
      enviar (){
-        this.isLoading = true; 
+        this.isLoading = true;
         if(this.atencion != ''){
           let fromData = new FormData();
           fromData.append('codreclamo', this.codreclamo);
@@ -300,19 +300,19 @@ export default{
           fromData.append('idtipoasistencia', 1);
           axios.post(this.$store.state.serverAsistenciaAdmin + '/updateReclamo2', fromData, {crossDomain: true, headers: {"Authorization": this.authorization}
           }).then((response) => {
-            this.isLoading = false; 
+            this.isLoading = false;
             this.atras();
-            this.notifyVue4();          
+            this.notifyVue4();
            },(error) => {
               this.isLoading = false;
            });
         }else{
-          this.isLoading = false; 
+          this.isLoading = false;
           this.notifyVue();
         }
      },
      corregir (){
-        this.isLoading = true; 
+        this.isLoading = true;
         let fromData = new FormData();
         fromData.append('codreclamo', this.codreclamo);
         fromData.append('fecreclamo', this.fecreclamo);
@@ -347,13 +347,13 @@ export default{
           this.porderivar = true;
           this.envio = true;
           this.isLoading = false;
-          this.notifyVue3();          
+          this.notifyVue3();
          },(error) => {
             this.isLoading = false;
          });
      },
      derivando (){
-        this.isLoading = true; 
+        this.isLoading = true;
         if(this.item.value != '' && this.derivacion2 != ''){
           let fromData = new FormData();
           fromData.append('codreclamo', this.codreclamo);
@@ -384,14 +384,14 @@ export default{
           fromData.append('idtipoasistencia', 1);
           axios.post(this.$store.state.serverAsistenciaAdmin + '/updateReclamo', fromData, {crossDomain: true, headers: {"Authorization": this.authorization}
           }).then((response) => {
-            this.isLoading = false; 
+            this.isLoading = false;
             this.atras();
-            this.notifyVue2();          
+            this.notifyVue2();
            },(error) => {
               this.isLoading = false;
            });
         }else{
-          this.isLoading = false; 
+          this.isLoading = false;
           this.notifyVue();
         }
      },

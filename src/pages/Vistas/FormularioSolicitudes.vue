@@ -1,8 +1,8 @@
 <template>
 	<div class="news2">
 	    <div>
-	        <loading :active.sync="isLoading" 
-            :can-cancel="false" 
+	        <loading :active.sync="isLoading"
+            :can-cancel="false"
 	        :is-full-page="true"></loading>
 	    </div>
 		<div class="container">
@@ -42,34 +42,34 @@
 							  <div class="row">
 								<div class="col-md-4">
 								   <label class="labelInput">DEPARTAMENTO</label>
-									<model-select 
+									<model-select
 									    @input="handleOnInput"
-										:options="departamentos" 
-										v-model="departamento" 
-										placeholder="Buscar departamento" 
-										style="border: 1px solid #D5D8DC; border-radius: 0" 
+										:options="departamentos"
+										v-model="departamento"
+										placeholder="Buscar departamento"
+										style="border: 1px solid #D5D8DC; border-radius: 0"
 										class="form-control imp-fue mb-3">
 									</model-select>
 								</div>
 								<div class="col-md-4">
 								    <label class="labelInput">PROVINCIA</label>
-									<model-select 
+									<model-select
 										@input="handleOnInput2"
-										:options="provincias" 
-										v-model="provincia" 
-										placeholder="Buscar provincia" 
-										style="border: 1px solid #D5D8DC; border-radius: 0" 
+										:options="provincias"
+										v-model="provincia"
+										placeholder="Buscar provincia"
+										style="border: 1px solid #D5D8DC; border-radius: 0"
 										class="form-control imp-fue mb-3">
 									</model-select>
 								</div>
 							    <div class="col-md-4">
 								    <label class="labelInput">DISTRITO</label>
-									<model-select 
+									<model-select
 										@input="handleOnInput3"
-										:options="distritos" 
-										v-model="distrito" 
-										placeholder="Buscar distrito" 
-										style="border: 1px solid #D5D8DC; border-radius: 0" 
+										:options="distritos"
+										v-model="distrito"
+										placeholder="Buscar distrito"
+										style="border: 1px solid #D5D8DC; border-radius: 0"
 										class="form-control imp-fue mb-3">
 									</model-select>
 								</div>
@@ -122,10 +122,10 @@
                               <p v-bind:class="{'text-danger': error2 }" style="color: #2E86C1; font-size: 13px;" class="mb-3 fuente">Máximo {{recorreCount2}} caracteres</p>
 							  <label class="labelInput">AUTORIZACIÓN (Solo si se elige la entrega virtual de la información) </label><br>
 							  <a><input type="checkbox" id="true" value="true" v-model="checkedNames">
-							  <label for="true" class="mb-3 fuente" style="color: #2E86C1; font-size: 13px;">Se autoriza la entrega de la información mediante gestor de documentos, cuando la extensión de la información solicitada exceda 
+							  <label for="true" class="mb-3 fuente" style="color: #2E86C1; font-size: 13px;">Se autoriza la entrega de la información mediante gestor de documentos, cuando la extensión de la información solicitada exceda
 								  20 MB; en cuyo caso, recibiré los links de acceso directo a la información en mi dirección electrónica.</label></a><br>
 							</div>
-							
+
 							<!-- <div class="news_post_text">
 								<label style="font-size: 16px" class="labelInput">Articulo 10, Inciso (d) del DS 070-2013-PCM</label>
 								<p>En caso de no consignar dirección de correo electrónico y/o teléfono de contacto, la respuesta estará disponible para ser recogida dentro del plazo de Ley (10 días útiles) en la Oficina de Trámite Documentario y Archivo en el horario regular de trabajo del Tribunal Constitucional.</p>
@@ -163,36 +163,36 @@
 				<h3 style="margin-bottom: 30px; font-size: 25px">Bienvenido Ciudadano!</h3>
 			</div>
 				<ul>
-					<li style="margin-bottom: 20px; color: #333; font-size: 20px">Antes de registrar la solicitud de acceso a la información, sírvase leer tener en consideración 
+					<li style="margin-bottom: 20px; color: #333; font-size: 20px">Antes de registrar la solicitud de acceso a la información, sírvase leer tener en consideración
 						lo siguiente:</li>
-					<li style="margin-bottom: 10px; color: #333"><i style="font-size: 10px; margin-right: 10px" class="fa fa-circle" aria-hidden="true"></i>Las solicitudes se 
-					atenderán en un plazo máximo de 10 días hábiles, contados desde el día siguiente a la presentación. En caso registre la solicitud en día inhábil 
+					<li style="margin-bottom: 10px; color: #333"><i style="font-size: 10px; margin-right: 10px" class="fa fa-circle" aria-hidden="true"></i>Las solicitudes se
+					atenderán en un plazo máximo de 10 días hábiles, contados desde el día siguiente a la presentación. En caso registre la solicitud en día inhábil
 					(sábado, domingo, feriados generales o día no laborable para el sector público) el plazo de atención se contará desde el día hábil siguiente.</li>
-					<li style="margin-bottom: 10px; color: #333"><i style="font-size: 10px; margin-right: 10px" class="fa fa-circle" aria-hidden="true"></i>En un plazo máximo 
-					de dos (2) días hábiles de recibida la solicitud, por causa justificada y fundamentada, se puede comunicar que la información se entregará en un plazo 
+					<li style="margin-bottom: 10px; color: #333"><i style="font-size: 10px; margin-right: 10px" class="fa fa-circle" aria-hidden="true"></i>En un plazo máximo
+					de dos (2) días hábiles de recibida la solicitud, por causa justificada y fundamentada, se puede comunicar que la información se entregará en un plazo
 					mayor a 10 días hábiles, indicando la fecha de entrega.</li>
-					<li style="margin-bottom: 10px; color: #333"><i style="font-size: 10px; margin-right: 10px" class="fa fa-circle" aria-hidden="true"></i>Puede elegir el 
+					<li style="margin-bottom: 10px; color: #333"><i style="font-size: 10px; margin-right: 10px" class="fa fa-circle" aria-hidden="true"></i>Puede elegir el
 					medio de entrega de la información virtual o físico.</li>
-					<li style="margin-bottom: 10px; color: #333"><i style="font-size: 10px; margin-right: 10px" class="fa fa-circle" aria-hidden="true"></i>La <a style="font-weight: bold">ENTREGA VIRTUAL</a> es 
+					<li style="margin-bottom: 10px; color: #333"><i style="font-size: 10px; margin-right: 10px" class="fa fa-circle" aria-hidden="true"></i>La <a style="font-weight: bold">ENTREGA VIRTUAL</a> es
 					<a style="font-weight: bold">GRATUITA</a>, y se realiza mediante correo electrónico. De ser su elección, deberá indicar obligatoriamente una dirección de correo electrónico. </li>
-					<li style="margin-bottom: 10px; color: #333"><i style="font-size: 10px; margin-right: 10px" class="fa fa-circle" aria-hidden="true"></i>Si solicita la 
-					<a style="font-weight: bold">ENTREGA FÍSICA</a> deberá abonar los costos de reproducción que correspondan a la documentación solicitada, antes de que la entidad proceda a expedir las copias 
+					<li style="margin-bottom: 10px; color: #333"><i style="font-size: 10px; margin-right: 10px" class="fa fa-circle" aria-hidden="true"></i>Si solicita la
+					<a style="font-weight: bold">ENTREGA FÍSICA</a> deberá abonar los costos de reproducción que correspondan a la documentación solicitada, antes de que la entidad proceda a expedir las copias
 					o grabar la información:</li>
 					<div class="d-block text-center">
 						<p style="color: blue">S/. 0.10 por folio sea copia simple o copia certificada</p>
 						<p style="color: blue; margin-top: -20px">S/. 1.20 por CD o DVD</p>
 					</div>
-					<li style="margin-bottom: 10px; color: #333"><i style="font-size: 10px; margin-right: 10px" class="fa fa-circle" aria-hidden="true"></i>Cual fuere la 
-					elección del medio de entrega, se sugiere consignar una dirección de correo electrónico y/o número telefónico, para facilitar la comunicación, coordinación 
+					<li style="margin-bottom: 10px; color: #333"><i style="font-size: 10px; margin-right: 10px" class="fa fa-circle" aria-hidden="true"></i>Cual fuere la
+					elección del medio de entrega, se sugiere consignar una dirección de correo electrónico y/o número telefónico, para facilitar la comunicación, coordinación
 					y entrega de la información solicitada.</li>
-					<li style="margin-bottom: 10px; color: #333"><i style="font-size: 10px; margin-right: 10px" class="fa fa-circle" aria-hidden="true"></i>Si no es posible 
-					indicar una dirección de correo electrónico y/o teléfono de contacto, luego de dos (2) días hábiles de presentada la solicitud, puede comunicarse a la 
-					Dirección General de Administración, teléfono 4275814 anexo 511 - 510, durante el horario regular de labores, de 8 a 13 horas y de 14 a 16:45 horas, para 
+					<li style="margin-bottom: 10px; color: #333"><i style="font-size: 10px; margin-right: 10px" class="fa fa-circle" aria-hidden="true"></i>Si no es posible
+					indicar una dirección de correo electrónico y/o teléfono de contacto, luego de dos (2) días hábiles de presentada la solicitud, puede comunicarse a la
+					Dirección General de Administración, teléfono 4275814 anexo 511 - 510, durante el horario regular de labores, de 8 a 13 horas y de 14 a 16:45 horas, para
 					conocer el costo de reproducción de la información, si existe prórroga en la fecha de entrega y/o coordinar la entrega.</li>
-					<li style="margin-bottom: 10px; color: #333"><i style="font-size: 10px; margin-right: 10px" class="fa fa-circle" aria-hidden="true"></i>En caso no pueda 
+					<li style="margin-bottom: 10px; color: #333"><i style="font-size: 10px; margin-right: 10px" class="fa fa-circle" aria-hidden="true"></i>En caso no pueda
 					acercarse o comunicarse con la entidad, se notificará el costo de reproducción y la forma de pago, a su domicilio real.</li>
 				</ul>
-			<b-button class="mt-3" variant="outline-primary" block @click="hideModal">HE LEÍDO LAS INDICACIONES</b-button>			
+			<b-button class="mt-3" variant="outline-primary" block @click="hideModal">HE LEÍDO LAS INDICACIONES</b-button>
 		</b-modal>
 	  </div>
 	</div>
@@ -201,7 +201,7 @@
 
 <script>
 
-import datasource from 'vue-resource'
+
 import axios from 'axios'
 
 import Loading from 'vue-loading-overlay'
@@ -216,7 +216,7 @@ export default {
       temas: ['-- SELECCIONE --', 'JURISDICCIONAL', 'ADMINISTRATIVO', 'OTROS'],
       entregas: ['-- SELECCIONE --', 'COPIA SIMPLE FÍSICA', 'COPIA CERTIFICADA FÍSICA', 'CORREO ELECTRÓNICO', 'CD/DVD', 'OTROS'],
       entrega: '-- SELECCIONE --',
-      tema: '-- SELECCIONE --',	
+      tema: '-- SELECCIONE --',
       documento: 'DNI',
       numero: '',
       nombres: '',
@@ -288,7 +288,7 @@ export default {
 		}
 	  },
 	  ubigeosx(param1, param2, param3){
-		this.isLoading = true; 
+		this.isLoading = true;
 		this.ubigeos = [];
         axios.get(this.$store.state.serverAsistenciaPublic + '/listUbigeo?departamento=' + param1 + '&provincia=' + param2, {
         headers: {
@@ -320,7 +320,7 @@ export default {
 				this.distrito.value = this.distritos[0].value;
 				this.distrito.text = this.distritos[0].text;
 			 }
-             this.isLoading = false; 
+             this.isLoading = false;
 			 if(param3 == 0){
 			   this.$refs['my-modal'].show();
 			 }
@@ -350,10 +350,10 @@ export default {
 		  this.menor = false;
 		}
 	  },
-	  enviar(){
-        this.macro = false;
-        this.micro = true;
-	  },
+
+
+
+
 	  validar(){
 	    if(this.documento == 'MENOR DE EDAD'){
            if(this.numero != '' && this.nombres != '' && this.apoderado != '' && this.pais != '' && this.avenida != '' && this.interior != '' && this.urbanizacion != '' && this.pedido != '' && this.observaciones != ''){
@@ -391,13 +391,13 @@ export default {
 		let checked = 0
 		if(this.dependencia == ""){
           this.dependencia = "--";
-		} 
+		}
 	    if(this.tema == "-- SELECCIONE --"){
           this.tema = "--";
-		} 
+		}
 		if(this.entrega == "-- SELECCIONE --"){
           this.entrega = "--";
-		} 
+		}
 		if(this.checkedNames == true){
 			checked = 1;
 		}
@@ -440,7 +440,7 @@ export default {
 	      },(error) => {
 	        this.isLoading = false;
 	  		this.notifyVue();
-	      }); 
+	      });
 	  },
 	  nuevo(){
 	  	this.limpiar();

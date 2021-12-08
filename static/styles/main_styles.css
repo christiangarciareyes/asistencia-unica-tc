@@ -97,15 +97,15 @@ h1, h2, h3, h4, h5, h6
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
 }
-h1::selection, 
-h2::selection, 
-h3::selection, 
-h4::selection, 
-h5::selection, 
-h6::selection
-{
-	
-}
+
+
+
+
+
+
+
+
+
 ::-webkit-input-placeholder
 {
 	font-size: 14px !important;
@@ -118,19 +118,19 @@ h6::selection
 	font-weight: 500 !important;
 	color: #a5a5a5 !important;
 }
-::-moz-placeholder /* Firefox 19+ */ 
+::-moz-placeholder /* Firefox 19+ */
 {
 	font-size: 14px !important;
 	font-weight: 500 !important;
 	color: #a5a5a5 !important;
-} 
+}
 :-ms-input-placeholder
-{ 
+{
 	font-size: 14px !important;
 	font-weight: 500 !important;
 	color: #a5a5a5 !important;
 }
-::input-placeholder
+::placeholder
 {
 	font-size: 14px !important;
 	font-weight: 500 !important;
@@ -250,7 +250,7 @@ section
 	transition: all 200ms ease;
 }
 .header.scrolled
-{	
+{
 	top: 15px;
 }
 .header.scrolled .header_content::before
@@ -731,10 +731,10 @@ section
 	margin-top: -40px;
     margin-bottom: -60px;
 }
-.section_title
-{
 
-}
+
+
+
 .section_title h1
 {
 	display: block;
@@ -788,10 +788,10 @@ section
 9. Popular
 *********************************/
 
-.popular
-{
 
-}
+
+
+
 .course_boxes
 {
 	margin-top: 68px;
@@ -1222,10 +1222,10 @@ input:last-of-type
 	margin-top: 21px;
 	margin-bottom: 13px;
 }
-.event_image
-{
 
-}
+
+
+
 .event_image img
 {
 	width: 100%;

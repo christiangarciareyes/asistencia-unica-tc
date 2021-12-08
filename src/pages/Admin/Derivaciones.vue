@@ -1,8 +1,8 @@
 <template>
 <div class="content">
   <div>
-      <loading :active.sync="isLoading" 
-      :can-cancel="false" 
+      <loading :active.sync="isLoading"
+      :can-cancel="false"
       :is-full-page="true"></loading>
   </div>
   <div class="md-layout">
@@ -48,11 +48,11 @@
                       <br><br>
                   </div>
                 </div>
-                <b-table bordered 
+                <b-table bordered
                          class="imp-fue m-t-10"
                          show-empty
                          stacked="lg"
-                         :items="lista" 
+                         :items="lista"
                          :fields="fields"
                          :current-page="currentPage"
                          :per-page="perPage"
@@ -75,8 +75,8 @@
                     </template>
                     <template slot="tipo" slot-scope="row">
                       <p v-if="row.item.nid_tipoasistencia == 1" class="labelInput imp-fue">LIBRO DE RECLAMACIONES</p>
-                      <p v-if="row.item.nid_tipoasistencia == 2" class="labelInput imp-fue">SOLICITUD DE ACCESO A LA INFORMACIÓN</p> 
-                      <p v-if="row.item.nid_tipoasistencia == 3" class="labelInput imp-fue">CANALES DE CONSULTA</p> 
+                      <p v-if="row.item.nid_tipoasistencia == 2" class="labelInput imp-fue">SOLICITUD DE ACCESO A LA INFORMACIÓN</p>
+                      <p v-if="row.item.nid_tipoasistencia == 3" class="labelInput imp-fue">CANALES DE CONSULTA</p>
                     </template>
                     <template slot="solicitante" slot-scope="row">
                       <p class="labelInput imp-fue">{{row.item.ctxt_nomape}}</p>
@@ -124,11 +124,11 @@
                       <br><br>
                   </div>
                 </div>
-                <b-table bordered 
+                <b-table bordered
                          class="imp-fue m-t-10"
                          show-empty
                          stacked="lg"
-                         :items="lista4" 
+                         :items="lista4"
                          :fields="fields3"
                          :current-page="currentPage3"
                          :per-page="perPage3"
@@ -148,7 +148,7 @@
                     </template>
                     <template slot="tipo" slot-scope="row">
                       <p v-if="row.item.nid_tipoasistencia == 1" class="labelInput imp-fue">LIBRO DE RECLAMACIONES</p>
-                      <p v-if="row.item.nid_tipoasistencia == 2" class="labelInput imp-fue">SOLICITUD DE ACCESO A LA INFORMACIÓN</p> 
+                      <p v-if="row.item.nid_tipoasistencia == 2" class="labelInput imp-fue">SOLICITUD DE ACCESO A LA INFORMACIÓN</p>
                     </template>
                     <template slot="solicitante" slot-scope="row">
                       <p class="labelInput imp-fue">{{row.item.ctxt_nombres}}</p>
@@ -194,11 +194,11 @@
                       <br><br>
                   </div>
                 </div>
-                <b-table bordered 
+                <b-table bordered
                          class="imp-fue m-t-10"
                          show-empty
                          stacked="lg"
-                         :items="lista2" 
+                         :items="lista2"
                          :fields="fields2"
                          :current-page="currentPage2"
                          :per-page="perPage2"
@@ -220,8 +220,8 @@
                     </template>
                     <template slot="tipo" slot-scope="row">
                       <p v-if="row.item.nid_tipoasistencia == 1" class="labelInput imp-fue">LIBRO DE RECLAMACIONES</p>
-                      <p v-if="row.item.nid_tipoasistencia == 2" class="labelInput imp-fue">SOLICITUD DE ACCESO A LA INFORMACIÓN</p> 
-                      <p v-if="row.item.nid_tipoasistencia == 3" class="labelInput imp-fue">CANALES DE CONSULTA</p> 
+                      <p v-if="row.item.nid_tipoasistencia == 2" class="labelInput imp-fue">SOLICITUD DE ACCESO A LA INFORMACIÓN</p>
+                      <p v-if="row.item.nid_tipoasistencia == 3" class="labelInput imp-fue">CANALES DE CONSULTA</p>
                     </template>
                     <template slot="solicitante" slot-scope="row">
                       <p class="labelInput imp-fue">{{row.item.ctxt_nomape}}</p>
@@ -269,11 +269,11 @@
                       <br><br>
                   </div>
                 </div>
-                <b-table bordered 
+                <b-table bordered
                          class="imp-fue m-t-10"
                          show-empty
                          stacked="lg"
-                         :items="lista5" 
+                         :items="lista5"
                          :fields="fields4"
                          :current-page="currentPage4"
                          :per-page="perPage4"
@@ -292,7 +292,7 @@
                     </template>
                     <template slot="tipo" slot-scope="row">
                       <p v-if="row.item.nid_tipoasistencia == 1" class="labelInput imp-fue">LIBRO DE RECLAMACIONES</p>
-                      <p v-if="row.item.nid_tipoasistencia == 2" class="labelInput imp-fue">SOLICITUD DE ACCESO A LA INFORMACIÓN</p> 
+                      <p v-if="row.item.nid_tipoasistencia == 2" class="labelInput imp-fue">SOLICITUD DE ACCESO A LA INFORMACIÓN</p>
                     </template>
                     <template slot="solicitante" slot-scope="row">
                       <p class="labelInput imp-fue">{{row.item.ctxt_nombres}}</p>
@@ -382,7 +382,7 @@
 
 <script>
 
-import datasource from 'vue-resource'
+
 import axios from 'axios'
 
 import Loading from 'vue-loading-overlay'
@@ -390,9 +390,9 @@ import 'vue-loading-overlay/dist/vue-loading.css'
 
 import moment from 'moment';
 import Datepicker from "vuejs-datepicker/dist/vuejs-datepicker.esm.js";
-import * as lang from "vuejs-datepicker/src/locale";
 
-import {en, es} from 'vuejs-datepicker/dist/locale';
+
+import {es} from 'vuejs-datepicker/dist/locale';
 
 export default{
   data () {
@@ -487,8 +487,8 @@ export default{
       isLoading: false,
       fullPage: true,
       aniobus: null,
-      perPage3: 'PENDIENTE',
-      pageOptions3: [ 'PENDIENTE', 'RESPONDIDO' ],
+
+
       asisten: 'LIBRO DE RECLAMACIONES',
       asistencia: [ 'LIBRO DE RECLAMACIONES', 'SOLICITUDES DE ACCESO A LA INFORMACIÓN', 'CANALES DE INFORMACIÓN' ],
       cargado: false,
@@ -595,7 +595,7 @@ export default{
   },
   created() {
     if(localStorage.getItem('AccessToken') != null || localStorage.getItem('expires_at') != null || localStorage.getItem('profile') != null || localStorage.getItem('operaciones') != null || localStorage.getItem('nickname') != null){
-      this.cargaView();      
+      this.cargaView();
     }else{
       this.$router.app.$auth.logout();
       this.$router.push({name: 'Portada'});
@@ -639,9 +639,9 @@ export default{
        this.$router.push('/derivaciones/consultarSolicitudQuechua');
     },
     cargaView(){
-      this.isLoading = true; 
+      this.isLoading = true;
       axios.get(this.$store.state.autenticacion + '/operaciones//app2/PAUC/'+ this.name + '/' + this.usuario, {
-      crossdomain: true, 
+      crossdomain: true,
       headers: {
         Authorization: this.authorization
       }
@@ -649,7 +649,7 @@ export default{
         this.auto = response.data;
         if(this.auto.codError == 1){
           this.consultar1(1);
-        }else{ 
+        }else{
           this.isLoading = false;
           this.$router.go(-1);
         }
@@ -681,7 +681,7 @@ export default{
             }
           },(error) => {
             this.notifyVue();
-          });  
+          });
     },
     consultar2(param){
       var anio = '';
@@ -737,7 +737,7 @@ export default{
             }
           },(error) => {
             this.notifyVue();
-          });  
+          });
     },
     consultar4(param){
       var anio = '';
@@ -792,7 +792,7 @@ export default{
         }else{
           nid = '3';
         }
-        this.isLoading = true; 
+        this.isLoading = true;
         axios.get(this.$store.state.serverAsistenciaAdmin + '/listReporteDerivados?anio=' + anio + '&mes=' + mes + '&tipo=' + tipo + '&nid=' + nid + '&usuario=' + this.usuario,  {crossdomain: true,
         headers: {
           Authorization: this.authorization
@@ -808,7 +808,7 @@ export default{
               }
             },(error) => {
               this.notifyVue();
-        }); 
+        });
       }else{
         this.$notify(
           {
@@ -892,9 +892,9 @@ export default{
             "ctxt_dependencia": item.ctxt_dependencia,
             "ctxt_formaentrega": item.ctxt_formaentrega,
             "ctxt_especificacion": item.ctxt_especificacion,
-            "dfec_registro": item.dfec_registro,
-            "dfec_vencimiento": item.dfec_vencimiento,
-            "nflg_estado": estado,
+
+
+
             "ctxt_domicilio": item.ctxt_domicilio,
             "ctxt_tiporeclamo": item.ctxt_tiporeclamo,
             "dfec_registro": item.dfec_registro,
@@ -938,7 +938,7 @@ export default{
             "ctxt_respuestaresponsable": item.ctxt_respuestaresponsable,
             "dfec_atencion": item.dfec_atencion,
             "vencido": vencimiento
-          })      
+          })
         }
       })
     },

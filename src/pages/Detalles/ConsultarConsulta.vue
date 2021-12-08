@@ -1,8 +1,8 @@
 <template>
 <div class="content">
   <div>
-      <loading :active.sync="isLoading" 
-      :can-cancel="false" 
+      <loading :active.sync="isLoading"
+      :can-cancel="false"
       :is-full-page="true"></loading>
   </div>
   <div class="md-layout">
@@ -43,7 +43,7 @@
                 <div class="row">
                   <div class="col-md-6">
                     <label class="labelInput">TIPO DE PERSONA</label>
-                    <b-form-input style="border-radius: 0px" class="imp-fue mb-3" type="text" v-model="persona" disabled/>   
+                    <b-form-input style="border-radius: 0px" class="imp-fue mb-3" type="text" v-model="persona" disabled/>
                   </div>
                   <div class="col-md-6">
                     <label class="labelInput">TIPO DE CANAL</label>
@@ -53,7 +53,7 @@
                 <div class="row">
                   <div class="col-md-6">
                     <label class="labelInput">CORREO ELECTRÓNICO</label>
-                    <b-form-input style="border-radius: 0px" class="imp-fue mb-3" type="text" v-model="correo" disabled/> 
+                    <b-form-input style="border-radius: 0px" class="imp-fue mb-3" type="text" v-model="correo" disabled/>
                   </div>
                   <div class="col-md-6">
                     <label class="labelInput">CORREO ELECTRÓNICO 2</label>
@@ -122,7 +122,7 @@
 
 <script>
 
-import datasource from 'vue-resource'
+
 import axios from 'axios'
 
 import Loading from 'vue-loading-overlay'
@@ -187,7 +187,7 @@ export default{
         if(this.estado == 1){
           this.variante = true;
         }
-      }     
+      }
     }else{
       this.$router.app.$auth.logout();
       this.$router.push({name: 'Portada'});
@@ -207,7 +207,7 @@ export default{
       if(this.expediente == '' || this.expediente == null || this.expediente == 'null' || this.expediente == undefined){
           this.expediente = '--'
       }
-      this.isLoading = true; 
+      this.isLoading = true;
       if(this.respuesta != ''){
         let fromData = new FormData();
         fromData.append('codreclamo', this.codreclamo);
@@ -251,14 +251,14 @@ export default{
         fromData.append('idtipoasistencia', 3);
         axios.post(this.$store.state.serverAsistenciaAdmin + '/updateDerivado', fromData, {crossDomain: true, headers: {"Authorization": this.authorization}
         }).then((response) => {
-          this.isLoading = false; 
+          this.isLoading = false;
           this.atras();
-          this.notifyVue4();          
+          this.notifyVue4();
          },(error) => {
             this.isLoading = false;
          });
       }else{
-        this.isLoading = false; 
+        this.isLoading = false;
         this.notifyVue();
       }
      },

@@ -1,8 +1,8 @@
 <template>
 <div class="content">
   <div>
-      <loading :active.sync="isLoading" 
-      :can-cancel="false" 
+      <loading :active.sync="isLoading"
+      :can-cancel="false"
       :is-full-page="true"></loading>
   </div>
   <div class="md-layout">
@@ -55,7 +55,7 @@
                 <div class="row">
                   <div class="col-md-6">
                     <label class="labelInput">CORREO ELECTRÓNICO</label>
-                    <b-form-input style="border-radius: 0px" class="imp-fue mb-3" type="text" v-model="correo" :disabled="editable"/> 
+                    <b-form-input style="border-radius: 0px" class="imp-fue mb-3" type="text" v-model="correo" :disabled="editable"/>
                   </div>
                   <div class="col-md-6">
                     <label class="labelInput">CORREO ELECTRÓNICO 2</label>
@@ -138,7 +138,7 @@
                 <div class="m-t-20" v-if="atendido">
                 <div class="news_post_text">
                   <p>1. El boton <a style="text-decoration: none; color: red">Enviar Atención</a> se usa para dar una respuesta final sobre la consulta registrada. Se enviará un correo electrónico al destinatario con el contenido que complete abajo.</p>
-                  <p style="margin-top: -15px">2. El boton <a style="text-decoration: none; color: red">Enviar Archivo</a> se usará si la respuesta debe contener un archivo que puede ser un documento, imagen o video. Al darle clic, el sistema lo llevará 
+                  <p style="margin-top: -15px">2. El boton <a style="text-decoration: none; color: red">Enviar Archivo</a> se usará si la respuesta debe contener un archivo que puede ser un documento, imagen o video. Al darle clic, el sistema lo llevará
                     a un apartado en donde deberá subir el archivo y enviar un correo al destinatario final.</p>
                   <p style="margin-top: -15px">3. Recordar que el archivo una vez enviado solo estará disponible para su descarga hasta 6 días despues de haber enviado y que solo podrá ser descargado máximo 3 veces.</p>
                 </div>
@@ -169,7 +169,7 @@
 
 <script>
 
-import datasource from 'vue-resource'
+
 import axios from 'axios'
 
 import Loading from 'vue-loading-overlay'
@@ -241,9 +241,9 @@ export default{
       if(this.$store.state.consulta == ''){
         this.$router.go(-1);
       }else{
-        this.isLoading = true; 
+        this.isLoading = true;
         this.cargaCanales();
-      }   
+      }
     }else{
       this.$router.app.$auth.logout();
       this.$router.push({name: 'Portada'});
@@ -251,7 +251,7 @@ export default{
   },
   methods: {
      enviarArchivo(){
-        window.open("https://sharing.oodrive.com/auth/ws/tcperu/?service=share","_blank") 
+        window.open("https://sharing.oodrive.com/auth/ws/tcperu/?service=share","_blank")
      },
      verPdf(){
         this.$router.push('/detalleConsulta/visorConsulta');
@@ -285,7 +285,7 @@ export default{
              });
              this.llenado();
              this.validacion();
-             this.isLoading = false; 
+             this.isLoading = false;
           },(error) => {
 
         });
@@ -295,7 +295,7 @@ export default{
           this.porderivar = true;
         }else if(this.estado == 1 || this.estado == 2){
           this.yaderivado = true;
-        }else{}
+        }
      },
      derivar(){
        this.atendido = false;
@@ -315,7 +315,7 @@ export default{
         if(this.expediente == '' || this.expediente == null || this.expediente == 'null' || this.expediente == undefined){
            this.expediente = '--'
         }
-        this.isLoading = true; 
+        this.isLoading = true;
         if(this.atencion != ''){
           let fromData = new FormData();
           fromData.append('codreclamo', this.codreclamo);
@@ -328,7 +328,7 @@ export default{
           fromData.append('celular', this.celular);
           fromData.append('expediente', this.expediente);
           fromData.append('detalle', this.detalle);
-          fromData.append('tipopersona', this.persona);         
+          fromData.append('tipopersona', this.persona);
           fromData.append('tipocanal', this.canal);
           fromData.append('atencion', this.atencion);
           fromData.append('estado', 3);
@@ -337,14 +337,14 @@ export default{
           fromData.append('idtipoasistencia', 3);
           axios.post(this.$store.state.serverAsistenciaAdmin + '/atenderConsulta', fromData, {crossDomain: true, headers: {"Authorization": this.authorization}
           }).then((response) => {
-            this.isLoading = false; 
+            this.isLoading = false;
             this.atras();
-            this.notifyVue4();          
+            this.notifyVue4();
            },(error) => {
               this.isLoading = false;
            });
         }else{
-          this.isLoading = false; 
+          this.isLoading = false;
           this.notifyVue();
         }
      },
@@ -359,7 +359,7 @@ export default{
 	      return re.test(email);
 	   },
      actualizar(){
-        if(this.tipodoc !== '' && this.numdoc !== '' && this.nombres !== '' && this.correo !== '' && this.celular !== '' && this.detalle !== '' && 
+        if(this.tipodoc !== '' && this.numdoc !== '' && this.nombres !== '' && this.correo !== '' && this.celular !== '' && this.detalle !== '' &&
         this.item2.text !== '' && this.item3.text !== ''){
           if(this.numdoc.length == 8){
             if(!this.validEmail(this.correo)){
@@ -399,7 +399,7 @@ export default{
         if(this.expediente == '' || this.expediente == null || this.expediente == 'null' || this.expediente == undefined){
            this.expediente = '--'
         }
-        this.isLoading = true; 
+        this.isLoading = true;
         let fromData = new FormData();
         fromData.append('documento', this.tipodoc);
         fromData.append('numero', this.numdoc);
@@ -415,7 +415,7 @@ export default{
         fromData.append('iddetalletipoasistencia', this.idregistro);
         axios.post(this.$store.state.serverAsistenciaAdmin + '/editarConsulta', fromData, {crossDomain: true, headers: {"Authorization": this.authorization}
         }).then((response) => {
-            this.notifyVue3(); 
+            this.notifyVue3();
             this.$router.push('/consultas');
         },(error) => {
             this.isLoading = false;
@@ -431,7 +431,7 @@ export default{
         if(this.expediente == '' || this.expediente == null || this.expediente == 'null' || this.expediente == undefined){
            this.expediente = '--'
         }
-        this.isLoading = true; 
+        this.isLoading = true;
         let fromData = new FormData();
         fromData.append('codreclamo', this.codreclamo);
         fromData.append('fecreclamo', this.fecreclamo);
@@ -461,7 +461,7 @@ export default{
           this.porderivar = true;
           this.envio = true;
           this.isLoading = false;
-          this.notifyVue3();          
+          this.notifyVue3();
          },(error) => {
             this.isLoading = false;
          });
@@ -476,7 +476,7 @@ export default{
         if(this.expediente == '' || this.expediente == null || this.expediente == 'null' || this.expediente == undefined){
            this.expediente = '--'
         }
-        this.isLoading = true; 
+        this.isLoading = true;
         if(this.item.value != '' && this.derivacion2 != ''){
           let fromData = new FormData();
           fromData.append('codreclamo', this.codreclamo);
@@ -504,14 +504,14 @@ export default{
           fromData.append('idtipoasistencia', 3);
           axios.post(this.$store.state.serverAsistenciaAdmin + '/derivarConsulta', fromData, {crossDomain: true, headers: {"Authorization": this.authorization}
           }).then((response) => {
-            this.isLoading = false; 
+            this.isLoading = false;
             this.atras();
-            this.notifyVue2();          
+            this.notifyVue2();
            },(error) => {
               this.isLoading = false;
            });
         }else{
-          this.isLoading = false; 
+          this.isLoading = false;
           this.notifyVue();
         }
      },
